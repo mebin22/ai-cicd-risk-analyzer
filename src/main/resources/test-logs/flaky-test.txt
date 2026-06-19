@@ -1,0 +1,4 @@
+Running tests...
+Test failed on first attempt.
+Test passed after third retry.
+Intermittent failure detected.

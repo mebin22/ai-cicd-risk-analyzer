@@ -1,0 +1,6 @@
+Build started...
+Running unit tests...
+All tests passed.
+Docker image built successfully.
+Deployment completed successfully.
+BUILD SUCCESS

@@ -1,0 +1,3 @@
+Maven dependency resolution failed.
+Version conflict detected.
+Spring Boot dependency mismatch found.

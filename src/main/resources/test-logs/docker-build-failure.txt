@@ -1,0 +1,3 @@
+Building Docker image...
+ERROR: failed to solve: package.json not found
+Docker build failed
