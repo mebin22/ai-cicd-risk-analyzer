@@ -5,6 +5,7 @@ import com.mabin.riskanalyzer.dto.RiskResponseDTO;
 import com.mabin.riskanalyzer.model.RiskAnalysis;
 import com.mabin.riskanalyzer.repository.RiskAnalysisRepository;
 import org.springframework.stereotype.Service;
+import com.mabin.riskanalyzer.dto.MlRiskResponseDTO;
 
 import java.time.LocalDateTime;
 
@@ -73,5 +74,21 @@ public class RiskAnalysisService {
         repository.save(analysis);
 
         return response;
+    }
+
+    public RiskAnalysis saveMlAnalysis(String logs, MlRiskResponseDTO mlResponse) {
+
+        RiskAnalysis analysis = new RiskAnalysis();
+
+        analysis.setLogs(logs);
+        analysis.setRiskScore(mlResponse.getRiskScore());
+        analysis.setRiskLevel(mlResponse.getRiskLevel());
+        analysis.setFailureCause("ML-based prediction");
+        analysis.setRecommendation(mlResponse.getRecommendation());
+        analysis.setDeploymentDecision(mlResponse.getDeploymentDecision());
+        analysis.setConfidence(mlResponse.getConfidence());
+        analysis.setTimestamp(LocalDateTime.now());
+
+        return repository.save(analysis);
     }
 }

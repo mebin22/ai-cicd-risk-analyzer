@@ -1,0 +1,13 @@
+logs,risk
+"Build successful all tests passed deployment completed",LOW
+"All unit tests passed docker image built successfully",LOW
+"Build completed successfully no errors found",LOW
+"Unit test failed assertion error build failed",HIGH
+"TaskServiceTest failed expected 200 got 500",HIGH
+"Docker build failed missing dependency error",HIGH
+"Deployment failed connection refused service unavailable",HIGH
+"Maven dependency version conflict detected",MEDIUM
+"Intermittent flaky test detected retry passed",MEDIUM
+"Code quality warning dependency issue found",MEDIUM
+"Timeout occurred during deployment but retry succeeded",MEDIUM
+"Memory warning detected during build",MEDIUM

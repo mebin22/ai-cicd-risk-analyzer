@@ -1,12 +1,12 @@
 package com.mabin.riskanalyzer.dto;
 
-public class RiskResponseDTO {
+public class MlRiskResponseDTO {
 
     private int riskScore;
     private String riskLevel;
-    private String failureCause;
-    private String recommendation;
+    private double confidence;
     private String deploymentDecision;
+    private String recommendation;
 
     public int getRiskScore() {
         return riskScore;
@@ -24,20 +24,12 @@ public class RiskResponseDTO {
         this.riskLevel = riskLevel;
     }
 
-    public String getFailureCause() {
-        return failureCause;
+    public double getConfidence() {
+        return confidence;
     }
 
-    public void setFailureCause(String failureCause) {
-        this.failureCause = failureCause;
-    }
-
-    public String getRecommendation() {
-        return recommendation;
-    }
-
-    public void setRecommendation(String recommendation) {
-        this.recommendation = recommendation;
+    public void setConfidence(double confidence) {
+        this.confidence = confidence;
     }
 
     public String getDeploymentDecision() {
@@ -48,4 +40,11 @@ public class RiskResponseDTO {
         this.deploymentDecision = deploymentDecision;
     }
 
+    public String getRecommendation() {
+        return recommendation;
+    }
+
+    public void setRecommendation(String recommendation) {
+        this.recommendation = recommendation;
+    }
 }

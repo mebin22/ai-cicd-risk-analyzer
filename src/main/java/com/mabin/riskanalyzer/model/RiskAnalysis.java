@@ -27,4 +27,5 @@ public class RiskAnalysis {
 
     private String deploymentDecision;
     private LocalDateTime timestamp;
+    private Double confidence;
 }

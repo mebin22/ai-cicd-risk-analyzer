@@ -1,10 +1,12 @@
 package com.mabin.riskanalyzer.controller;
 
+import com.mabin.riskanalyzer.dto.MlRiskResponseDTO;
 import com.mabin.riskanalyzer.dto.RiskRequestDTO;
 import com.mabin.riskanalyzer.dto.RiskResponseDTO;
 import com.mabin.riskanalyzer.model.RiskAnalysis;
 import com.mabin.riskanalyzer.repository.RiskAnalysisRepository;
 import com.mabin.riskanalyzer.service.GeminiService;
+import com.mabin.riskanalyzer.service.MlRiskService;
 import com.mabin.riskanalyzer.service.RiskAnalysisService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,18 +18,36 @@ public class RiskAnalysisController {
 
     private final RiskAnalysisService riskAnalysisService;
     private final GeminiService geminiService;
+    private final MlRiskService mlRiskService;
     private final RiskAnalysisRepository riskAnalysisRepository;
 
     public RiskAnalysisController(RiskAnalysisService riskAnalysisService,
-                                  GeminiService geminiService, RiskAnalysisRepository riskAnalysisRepository) {
+                                  GeminiService geminiService,
+                                  MlRiskService mlRiskService,
+                                  RiskAnalysisRepository riskAnalysisRepository) {
         this.riskAnalysisService = riskAnalysisService;
         this.geminiService = geminiService;
+        this.mlRiskService = mlRiskService;
         this.riskAnalysisRepository = riskAnalysisRepository;
     }
 
     @PostMapping("/analyze")
     public RiskResponseDTO analyzeRisk(@RequestBody RiskRequestDTO request) {
         return riskAnalysisService.analyzeRisk(request);
+    }
+
+    @PostMapping("/analyze-ml")
+    public MlRiskResponseDTO analyzeWithML(@RequestBody RiskRequestDTO request) {
+
+        MlRiskResponseDTO response =
+                mlRiskService.predictRisk(request.getLogs());
+
+        riskAnalysisService.saveMlAnalysis(
+                request.getLogs(),
+                response
+        );
+
+        return response;
     }
 
     @GetMapping("/scenarios")
