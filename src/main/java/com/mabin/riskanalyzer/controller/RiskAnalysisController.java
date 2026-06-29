@@ -1,9 +1,6 @@
 package com.mabin.riskanalyzer.controller;
 
-import com.mabin.riskanalyzer.dto.DashboardStatsDTO;
-import com.mabin.riskanalyzer.dto.MlRiskResponseDTO;
-import com.mabin.riskanalyzer.dto.RiskRequestDTO;
-import com.mabin.riskanalyzer.dto.RiskResponseDTO;
+import com.mabin.riskanalyzer.dto.*;
 import com.mabin.riskanalyzer.model.RiskAnalysis;
 import com.mabin.riskanalyzer.repository.RiskAnalysisRepository;
 import com.mabin.riskanalyzer.service.GeminiService;
@@ -94,5 +91,17 @@ public class RiskAnalysisController {
     public List<RiskAnalysis> getRecentAnalyses() {
         return riskAnalysisRepository
                 .findAllByOrderByTimestampDesc(PageRequest.of(0, 10));
+    }
+
+    @GetMapping("/trend")
+    public RiskTrendDTO getRiskTrend() {
+
+        RiskTrendDTO trend = new RiskTrendDTO();
+
+        trend.setHighRisk(riskAnalysisRepository.countByRiskLevel("HIGH"));
+        trend.setMediumRisk(riskAnalysisRepository.countByRiskLevel("MEDIUM"));
+        trend.setLowRisk(riskAnalysisRepository.countByRiskLevel("LOW"));
+
+        return trend;
     }
 }
