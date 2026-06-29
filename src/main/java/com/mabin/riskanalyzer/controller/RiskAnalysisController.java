@@ -1,5 +1,6 @@
 package com.mabin.riskanalyzer.controller;
 
+import com.mabin.riskanalyzer.dto.DashboardStatsDTO;
 import com.mabin.riskanalyzer.dto.MlRiskResponseDTO;
 import com.mabin.riskanalyzer.dto.RiskRequestDTO;
 import com.mabin.riskanalyzer.dto.RiskResponseDTO;
@@ -70,5 +71,21 @@ public class RiskAnalysisController {
     @GetMapping("/history")
     public List<RiskAnalysis> getHistory() {
         return riskAnalysisRepository.findAll();
+    }
+
+    @GetMapping("/stats")
+    public DashboardStatsDTO getStats() {
+
+        DashboardStatsDTO stats = new DashboardStatsDTO();
+
+        stats.setTotalAnalyses(riskAnalysisRepository.count());
+        stats.setHighRiskCount(riskAnalysisRepository.countByRiskLevel("HIGH"));
+        stats.setMediumRiskCount(riskAnalysisRepository.countByRiskLevel("MEDIUM"));
+        stats.setLowRiskCount(riskAnalysisRepository.countByRiskLevel("LOW"));
+
+        Double avg = riskAnalysisRepository.getAverageRiskScore();
+        stats.setAverageRiskScore(avg != null ? avg : 0);
+
+        return stats;
     }
 }
