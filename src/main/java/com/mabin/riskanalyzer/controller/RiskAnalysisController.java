@@ -10,6 +10,7 @@ import com.mabin.riskanalyzer.service.GeminiService;
 import com.mabin.riskanalyzer.service.MlRiskService;
 import com.mabin.riskanalyzer.service.RiskAnalysisService;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 
@@ -87,5 +88,11 @@ public class RiskAnalysisController {
         stats.setAverageRiskScore(avg != null ? avg : 0);
 
         return stats;
+    }
+
+    @GetMapping("/recent")
+    public List<RiskAnalysis> getRecentAnalyses() {
+        return riskAnalysisRepository
+                .findAllByOrderByTimestampDesc(PageRequest.of(0, 10));
     }
 }
