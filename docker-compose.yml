@@ -1,0 +1,29 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: risk-postgres
+    environment:
+      POSTGRES_DB: risk_analyzer
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+
+  ml-service:
+    build: ./ml-risk-model
+    container_name: risk-ml-service
+    ports:
+      - "5001:5001"
+
+  springboot-app:
+    build: .
+    container_name: risk-springboot-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - ml-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/risk_analyzer
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres

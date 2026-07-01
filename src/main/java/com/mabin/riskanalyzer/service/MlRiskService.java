@@ -15,7 +15,7 @@ public class MlRiskService {
         Map<String, String> requestBody = Map.of("logs", logs);
 
         MlRiskResponseDTO response = restClient.post()
-                .uri("http://localhost:5001/predict-risk")
+                .uri("http://ml-service:5001/predict-risk")
                 .header("Content-Type", "application/json")
                 .body(requestBody)
                 .retrieve()
