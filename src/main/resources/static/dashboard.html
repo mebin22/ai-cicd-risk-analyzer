@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CI/CD Risk Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial; margin: 30px; background: #f4f6f8; }
+        h1 { color: #222; }
+        .cards { display: flex; gap: 20px; margin-bottom: 30px; }
+        .card { background: white; padding: 20px; border-radius: 8px; width: 200px; box-shadow: 0 2px 8px #ccc; }
+        .chart-box { background: white; padding: 20px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 2px 8px #ccc; }
+        table { width: 100%; background: white; border-collapse: collapse; }
+        th, td { padding: 12px; border-bottom: 1px solid #ddd; text-align: left; }
+        .HIGH { color: red; font-weight: bold; }
+        .MEDIUM { color: orange; font-weight: bold; }
+        .LOW { color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<h1>AI-Assisted CI/CD Risk Dashboard</h1>
+
+<div class="cards">
+    <div class="card"><h3>Total</h3><p id="total">0</p></div>
+    <div class="card"><h3>High Risk</h3><p id="high">0</p></div>
+    <div class="card"><h3>Low Risk</h3><p id="low">0</p></div>
+    <div class="card"><h3>Average Score</h3><p id="avg">0</p></div>
+</div>
+
+<div class="chart-box">
+    <h2>Risk Distribution</h2>
+    <canvas id="riskChart" width="400" height="150"></canvas>
+</div>
+
+<h2>Recent Analyses</h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Risk Level</th>
+        <th>Score</th>
+        <th>Confidence</th>
+        <th>Decision</th>
+        <th>Recommendation</th>
+    </tr>
+    </thead>
+    <tbody id="recentTable"></tbody>
+</table>
+
+<script>
+    async function loadStats() {
+        const res = await fetch('/api/risk/stats');
+        const data = await res.json();
+
+        document.getElementById('total').innerText = data.totalAnalyses;
+        document.getElementById('high').innerText = data.highRiskCount;
+        document.getElementById('low').innerText = data.lowRiskCount;
+        document.getElementById('avg').innerText = data.averageRiskScore.toFixed(2);
+    }
+
+    async function loadRecent() {
+        const res = await fetch('/api/risk/recent');
+        const data = await res.json();
+
+        const table = document.getElementById('recentTable');
+        table.innerHTML = '';
+
+        data.forEach(item => {
+            table.innerHTML += `
+                <tr>
+                    <td>${item.id}</td>
+                    <td class="${item.riskLevel}">${item.riskLevel}</td>
+                    <td>${item.riskScore}</td>
+                    <td>${item.confidence ?? 'N/A'}</td>
+                    <td>${item.deploymentDecision}</td>
+                    <td>${item.recommendation}</td>
+                </tr>
+            `;
+        });
+    }
+
+    async function loadTrend() {
+        const res = await fetch('/api/risk/trend');
+        const data = await res.json();
+
+        const ctx = document.getElementById('riskChart');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['High', 'Medium', 'Low'],
+                datasets: [{
+                    label: 'Risk Count',
+                    data: [data.highRisk, data.mediumRisk, data.lowRisk]
+                }]
+            }
+        });
+    }
+
+    loadStats();
+    loadRecent();
+    loadTrend();
+</script>
+
+</body>
+</html>
