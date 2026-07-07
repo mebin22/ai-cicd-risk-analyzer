@@ -31,16 +31,24 @@ public class MlRiskService {
     private String generateRecommendation(String logs) {
         String log = logs.toLowerCase();
 
-        if (log.contains("docker")) {
-            return "Check Dockerfile configuration and dependency installation steps.";
-        }
-
-        if (log.contains("unit test") || log.contains("test failed")) {
+        // Check test failures first
+        if (log.contains("unit test")
+                || log.contains("test failed")
+                || log.contains("failures: 1")) {
             return "Review failing test cases and fix code defects before deployment.";
         }
 
+        // Check dependency issues before docker
         if (log.contains("dependency")) {
             return "Resolve dependency version conflicts and rebuild the project.";
+        }
+
+        // Only trigger Docker recommendation for actual Docker failures
+        if (log.contains("docker")
+                && (log.contains("failed")
+                || log.contains("error")
+                || log.contains("build failure"))) {
+            return "Check Dockerfile configuration and dependency installation steps.";
         }
 
         if (log.contains("deployment failed")) {
