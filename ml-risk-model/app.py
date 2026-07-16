@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
 import joblib
+import json
 
 app = Flask(__name__)
 
 model = joblib.load("risk_model.pkl")
+
 
 @app.route("/predict-risk", methods=["POST"])
 def predict_risk():
@@ -17,10 +19,12 @@ def predict_risk():
         score = 20
         decision = "PROCEED"
         recommendation = "Deployment can proceed."
+
     elif prediction == "MEDIUM":
         score = 55
         decision = "REVIEW"
         recommendation = "Review pipeline logs before deployment."
+
     else:
         score = 85
         decision = "STOP"
@@ -33,6 +37,15 @@ def predict_risk():
         "deploymentDecision": decision,
         "recommendation": recommendation
     })
+
+
+@app.route("/metrics", methods=["GET"])
+def get_metrics():
+    with open("metrics.json", "r", encoding="utf-8") as file:
+        metrics = json.load(file)
+
+    return jsonify(metrics)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5001, debug=True)

@@ -1,6 +1,7 @@
 package com.mabin.riskanalyzer.service;
 
 import com.mabin.riskanalyzer.dto.MlRiskResponseDTO;
+import com.mabin.riskanalyzer.dto.ModelMetricsDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
@@ -64,5 +65,12 @@ public class MlRiskService {
         }
 
         return "Review CI/CD logs and resolve identified issues before deployment.";
+    }
+
+    public ModelMetricsDTO getMetrics() {
+        return restClient.get()
+                .uri("http://ml-service:5001/metrics")
+                .retrieve()
+                .body(ModelMetricsDTO.class);
     }
 }

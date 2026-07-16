@@ -1,6 +1,8 @@
 package com.mabin.riskanalyzer.controller;
 
+import com.mabin.riskanalyzer.dto.GitHubAnalysisResponseDTO;
 import com.mabin.riskanalyzer.dto.MlRiskResponseDTO;
+import com.mabin.riskanalyzer.dto.ModelMetricsDTO;
 import com.mabin.riskanalyzer.model.RiskAnalysis;
 import com.mabin.riskanalyzer.service.GitHubActionsService;
 import com.mabin.riskanalyzer.service.MlRiskService;
@@ -45,11 +47,27 @@ public class GitHubActionsController {
     }
 
     @PostMapping("/api/github/analyze-latest")
-    public RiskAnalysis analyzeLatest() {
+    public GitHubAnalysisResponseDTO analyzeLatest() {
         String logs = gitHubActionsService.buildWorkflowSummary();
 
         MlRiskResponseDTO mlResult = mlRiskService.predictRisk(logs);
 
-        return riskAnalysisService.saveMlAnalysis(logs, mlResult);
+        RiskAnalysis saved = riskAnalysisService.saveMlAnalysis(logs, mlResult);
+
+        GitHubAnalysisResponseDTO response = new GitHubAnalysisResponseDTO();
+        response.setId(saved.getId());
+        response.setSource("GitHub Actions");
+        response.setRiskLevel(saved.getRiskLevel());
+        response.setRiskScore(saved.getRiskScore());
+        response.setConfidence(saved.getConfidence());
+        response.setDeploymentDecision(saved.getDeploymentDecision());
+        response.setRecommendation(saved.getRecommendation());
+
+        return response;
+    }
+
+    @GetMapping("/api/ml/metrics")
+    public ModelMetricsDTO getMetrics() {
+        return mlRiskService.getMetrics();
     }
 }
