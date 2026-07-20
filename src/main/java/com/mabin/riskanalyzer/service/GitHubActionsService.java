@@ -46,15 +46,28 @@ public class GitHubActionsService {
                 repo
         );
 
-        Map response = restClient.get()
+        Map<?, ?> response = restClient.get()
                 .uri(url)
                 .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
                 .header(HttpHeaders.ACCEPT, "application/vnd.github+json")
                 .retrieve()
                 .body(Map.class);
 
+        if (response == null || response.get("workflow_runs") == null) {
+            throw new IllegalStateException(
+                    "No GitHub Actions workflow runs were returned."
+            );
+        }
+
+        @SuppressWarnings("unchecked")
         List<Map<String, Object>> runs =
                 (List<Map<String, Object>>) response.get("workflow_runs");
+
+        if (runs.isEmpty()) {
+            throw new IllegalStateException(
+                    "No GitHub Actions workflow runs were found."
+            );
+        }
 
         return ((Number) runs.get(0).get("id")).longValue();
     }
@@ -63,43 +76,54 @@ public class GitHubActionsService {
 
         Long runId = getLatestRunId();
 
-        String jobsUrl = String.format(
-                "https://api.github.com/repos/%s/%s/actions/runs/%d/jobs",
-                owner,
-                repo,
-                runId
-        );
+        String jobsUrl = buildJobsUrl(runId);
 
-        Map response = restClient.get()
+        Map<?, ?> response = restClient.get()
                 .uri(jobsUrl)
                 .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
                 .header(HttpHeaders.ACCEPT, "application/vnd.github+json")
                 .retrieve()
                 .body(Map.class);
+
+        if (response == null) {
+            throw new IllegalStateException(
+                    "No GitHub Actions job information was returned."
+            );
+        }
 
         return response.toString();
     }
 
     public String buildWorkflowSummary() {
+        return buildWorkflowSummary(getLatestRunId());
+    }
 
-        Long runId = getLatestRunId();
+    public String buildWorkflowSummary(Long runId) {
 
-        String jobsUrl = String.format(
-                "https://api.github.com/repos/%s/%s/actions/runs/%d/jobs",
-                owner,
-                repo,
-                runId
-        );
+        String jobsUrl = buildJobsUrl(runId);
 
-        Map response = restClient.get()
+        Map<?, ?> response = restClient.get()
                 .uri(jobsUrl)
                 .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
                 .header(HttpHeaders.ACCEPT, "application/vnd.github+json")
                 .retrieve()
                 .body(Map.class);
 
+        if (response == null || response.get("jobs") == null) {
+            throw new IllegalStateException(
+                    "No GitHub Actions jobs were returned for run " + runId
+            );
+        }
+
+        @SuppressWarnings("unchecked")
         List<Map<String, Object>> jobs =
                 (List<Map<String, Object>>) response.get("jobs");
+
+        if (jobs.isEmpty()) {
+            throw new IllegalStateException(
+                    "No jobs were found for GitHub workflow run " + runId
+            );
+        }
 
         StringBuilder summary = new StringBuilder();
 
@@ -107,6 +131,10 @@ public class GitHubActionsService {
 
             summary.append("Workflow: ")
                     .append(job.get("workflow_name"))
+                    .append("\n");
+
+            summary.append("Job: ")
+                    .append(job.get("name"))
                     .append("\n");
 
             summary.append("Status: ")
@@ -117,19 +145,33 @@ public class GitHubActionsService {
                     .append(job.get("conclusion"))
                     .append("\n");
 
-            List<Map<String, Object>> steps =
-                    (List<Map<String, Object>>) job.get("steps");
+            Object stepsObject = job.get("steps");
 
-            for (Map<String, Object> step : steps) {
+            if (stepsObject instanceof List<?> steps) {
+                for (Object stepObject : steps) {
 
-                summary.append("Step ")
-                        .append(step.get("name"))
-                        .append(" ")
-                        .append(step.get("conclusion"))
-                        .append("\n");
+                    if (!(stepObject instanceof Map<?, ?> step)) {
+                        continue;
+                    }
+
+                    summary.append("Step ")
+                            .append(step.get("name"))
+                            .append(": ")
+                            .append(step.get("conclusion"))
+                            .append("\n");
+                }
             }
         }
 
         return summary.toString();
+    }
+
+    private String buildJobsUrl(Long runId) {
+        return String.format(
+                "https://api.github.com/repos/%s/%s/actions/runs/%d/jobs",
+                owner,
+                repo,
+                runId
+        );
     }
 }

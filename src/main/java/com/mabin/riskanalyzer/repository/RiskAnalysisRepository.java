@@ -15,4 +15,6 @@ public interface RiskAnalysisRepository extends JpaRepository<RiskAnalysis, Long
     Double getAverageRiskScore();
 
     List<RiskAnalysis> findAllByOrderByTimestampDesc(Pageable pageable);
+
+    boolean existsByGithubRunId(Long githubRunId);
 }
