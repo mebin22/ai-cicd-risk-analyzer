@@ -151,6 +151,11 @@
     <canvas id="riskChart" width="400" height="150"></canvas>
 </div>
 
+<div class="chart-box">
+    <h2>Prediction Confidence Trend</h2>
+    <canvas id="confidenceChart" width="400" height="150"></canvas>
+</div>
+
 <h2>Recent Analyses</h2>
 
 <table>
@@ -169,6 +174,9 @@
 </table>
 
 <script>
+    let riskChart;
+    let confidenceChart;
+
     function toPercentage(value) {
         if (value === null || value === undefined) {
             return 'N/A';
@@ -245,7 +253,9 @@
             const res = await fetch('/api/risk/recent');
 
             if (!res.ok) {
-                throw new Error(`Recent analyses request failed: ${res.status}`);
+                throw new Error(
+                    `Recent analyses request failed: ${res.status}`
+                );
             }
 
             const data = await res.json();
@@ -290,7 +300,11 @@
             const data = await res.json();
             const ctx = document.getElementById('riskChart');
 
-            new Chart(ctx, {
+            if (riskChart) {
+                riskChart.destroy();
+            }
+
+            riskChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: ['High', 'Medium', 'Low'],
@@ -304,7 +318,15 @@
                     }]
                 },
                 options: {
-                    responsive: true
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                precision: 0
+                            }
+                        }
+                    }
                 }
             });
 
@@ -313,10 +335,92 @@
         }
     }
 
-    loadStats();
-    loadMetrics();
-    loadRecent();
-    loadTrend();
+    async function loadConfidenceTrend() {
+        try {
+            const res = await fetch('/api/risk/recent');
+
+            if (!res.ok) {
+                throw new Error(
+                    `Confidence request failed: ${res.status}`
+                );
+            }
+
+            const data = await res.json();
+
+            const orderedData = [...data]
+                .filter(item =>
+                    item.confidence !== null &&
+                    item.confidence !== undefined
+                )
+                .reverse();
+
+            const labels = orderedData.map(item =>
+                `Analysis ${item.id}`
+            );
+
+            const values = orderedData.map(item =>
+                Number((item.confidence * 100).toFixed(2))
+            );
+
+            const ctx =
+                document.getElementById('confidenceChart');
+
+            if (confidenceChart) {
+                confidenceChart.destroy();
+            }
+
+            confidenceChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Prediction Confidence (%)',
+                        data: values,
+                        fill: false,
+                        tension: 0.3,
+                        spanGaps: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Confidence (%)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Analysis'
+                            }
+                        }
+                    }
+                }
+            });
+
+        } catch (error) {
+            console.error(
+                'Unable to load confidence trend:',
+                error
+            );
+        }
+    }
+
+    async function loadDashboard() {
+        await Promise.all([
+            loadStats(),
+            loadMetrics(),
+            loadRecent(),
+            loadTrend(),
+            loadConfidenceTrend()
+        ]);
+    }
+
+    loadDashboard();
 </script>
 
 </body>
