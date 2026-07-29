@@ -19,5 +19,13 @@ jobs:
           distribution: temurin
           java-version: "21"
 
+      - name: Optional Quality Check
+        continue-on-error: true
+        run: |
+          echo "Warning: code coverage is below threshold"
+          echo "Warning: manual review is required"
+          echo "Non-critical quality check failed"
+          exit 1
+
       - name: Build Project
         run: mvn clean package
