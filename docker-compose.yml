@@ -8,6 +8,8 @@ services:
       POSTGRES_PASSWORD: postgres
     ports:
       - "5433:5432"
+    volumes:
+      - risk-postgres-data:/var/lib/postgresql/data
 
   ml-service:
     build: ./ml-risk-model
@@ -27,3 +29,9 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/risk_analyzer
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
+      ML_SERVICE_URL: http://ml-service:5001
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+
+volumes:
+  risk-postgres-data:

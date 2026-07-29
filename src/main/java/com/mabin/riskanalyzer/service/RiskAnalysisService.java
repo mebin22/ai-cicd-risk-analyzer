@@ -1,5 +1,6 @@
 package com.mabin.riskanalyzer.service;
 
+import com.mabin.riskanalyzer.dto.HistorySummaryDTO;
 import com.mabin.riskanalyzer.dto.MlRiskResponseDTO;
 import com.mabin.riskanalyzer.dto.RiskRequestDTO;
 import com.mabin.riskanalyzer.dto.RiskResponseDTO;
@@ -25,16 +26,21 @@ public class RiskAnalysisService {
 
     public RiskResponseDTO analyzeRisk(RiskRequestDTO request) {
 
-        String logs = request.getLogs().toLowerCase();
+        String logs = request.getLogs() == null
+                ? ""
+                : request.getLogs().toLowerCase();
 
         RiskResponseDTO response = new RiskResponseDTO();
 
-        int riskScore = riskScoringService.calculateRiskScore(logs);
+        int riskScore =
+                riskScoringService.calculateRiskScore(logs);
 
         response.setRiskScore(riskScore);
+
         response.setRiskLevel(
                 riskScoringService.getRiskLevel(riskScore)
         );
+
         response.setDeploymentDecision(
                 riskScoringService.getDeploymentDecision(riskScore)
         );
@@ -46,6 +52,7 @@ public class RiskAnalysisService {
             response.setFailureCause(
                     "Unit test failure detected"
             );
+
             response.setRecommendation(
                     "Fix failing test cases before deployment"
             );
@@ -57,6 +64,7 @@ public class RiskAnalysisService {
             response.setFailureCause(
                     "Docker build issue detected"
             );
+
             response.setRecommendation(
                     "Check Dockerfile, build context, and dependency installation steps"
             );
@@ -67,6 +75,7 @@ public class RiskAnalysisService {
             response.setFailureCause(
                     "Dependency issue detected"
             );
+
             response.setRecommendation(
                     "Review dependency versions and update project configuration"
             );
@@ -77,6 +86,7 @@ public class RiskAnalysisService {
             response.setFailureCause(
                     "Deployment failure detected"
             );
+
             response.setRecommendation(
                     "Check deployment environment, service availability, and configuration"
             );
@@ -88,6 +98,7 @@ public class RiskAnalysisService {
             response.setFailureCause(
                     "Infrastructure or runtime issue detected"
             );
+
             response.setRecommendation(
                     "Check server resources, timeout settings, and service availability"
             );
@@ -98,14 +109,17 @@ public class RiskAnalysisService {
             response.setFailureCause(
                     "No major issue detected"
             );
+
             response.setRecommendation(
                     "Deployment can proceed"
             );
 
         } else {
+
             response.setFailureCause(
                     "Unclear pipeline condition"
             );
+
             response.setRecommendation(
                     "Review logs manually before deployment"
             );
@@ -118,9 +132,11 @@ public class RiskAnalysisService {
         analysis.setRiskLevel(response.getRiskLevel());
         analysis.setFailureCause(response.getFailureCause());
         analysis.setRecommendation(response.getRecommendation());
+
         analysis.setDeploymentDecision(
                 response.getDeploymentDecision()
         );
+
         analysis.setTimestamp(LocalDateTime.now());
         analysis.setGithubRunId(null);
 
@@ -133,7 +149,11 @@ public class RiskAnalysisService {
             String logs,
             MlRiskResponseDTO mlResponse) {
 
-        return saveMlAnalysis(logs, mlResponse, null);
+        return saveMlAnalysis(
+                logs,
+                mlResponse,
+                null
+        );
     }
 
     public RiskAnalysis saveMlAnalysis(
@@ -144,29 +164,65 @@ public class RiskAnalysisService {
         RiskAnalysis analysis = new RiskAnalysis();
 
         analysis.setLogs(logs);
-        analysis.setRiskScore(mlResponse.getRiskScore());
-        analysis.setRiskLevel(mlResponse.getRiskLevel());
+        analysis.setRiskScore(
+                mlResponse.getRiskScore()
+        );
+        analysis.setRiskLevel(
+                mlResponse.getRiskLevel()
+        );
+
         analysis.setFailureCause(
                 githubRunId == null
                         ? "ML-based prediction"
                         : "GitHub Actions ML prediction"
         );
+
         analysis.setRecommendation(
                 mlResponse.getRecommendation()
         );
+
         analysis.setDeploymentDecision(
                 mlResponse.getDeploymentDecision()
         );
+
         analysis.setConfidence(
                 mlResponse.getConfidence()
         );
-        analysis.setTimestamp(LocalDateTime.now());
-        analysis.setGithubRunId(githubRunId);
+
+        analysis.setTimestamp(
+                LocalDateTime.now()
+        );
+
+        analysis.setGithubRunId(
+                githubRunId
+        );
 
         return repository.save(analysis);
     }
 
-    public boolean isGithubRunAlreadyAnalyzed(Long githubRunId) {
-        return repository.existsByGithubRunId(githubRunId);
+    public boolean isGithubRunAlreadyAnalyzed(
+            Long githubRunId) {
+
+        return repository.existsByGithubRunId(
+                githubRunId
+        );
+    }
+
+    public HistorySummaryDTO getHistorySummary() {
+
+        long successful = repository.countByDecision("PROCEED");
+
+        long failed = repository.countByDecision("STOP");
+
+        Double averageConfidence = repository.getAverageConfidence();
+
+        Double averageRiskScore = repository.getAverageRiskScore();
+
+        return new HistorySummaryDTO(
+                successful,
+                failed,
+                averageConfidence != null ? averageConfidence : 0.0,
+                averageRiskScore != null ? averageRiskScore : 0.0
+        );
     }
 }

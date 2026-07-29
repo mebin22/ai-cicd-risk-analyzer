@@ -1,0 +1,1001 @@
+logs,risk
+Minor configuration warning detected during deployment Dependency: Spring Boot.,MEDIUM
+Flaky test detected but retry passed successfully Job completed in 114 seconds.,MEDIUM
+Application deployment failed because connection was refused,HIGH
+Integration tests failed and pipeline was terminated Environment: staging.,HIGH
+Application deployment failed because connection was refused Workflow run number 1557.,HIGH
+Memory usage warning detected during compilation Environment: staging.,MEDIUM
+Deployment failed because service was unavailable,HIGH
+Container crashed with OutOfMemoryError,HIGH
+SonarQube reported code quality warnings Workflow run number 6004.,MEDIUM
+Dependency version warning detected during build Workflow run number 6818.,MEDIUM
+Network timeout occurred while downloading dependencies Test: PaymentIntegrationTest.,MEDIUM
+Deployment completed successfully to Kubernetes Environment: development.,LOW
+Dependency version warning detected during build Service: AuthenticationService.,MEDIUM
+Docker image size exceeded recommended limit Dependency: Spring Boot.,MEDIUM
+Unit test failed with assertion error and build stopped Test: LoginServiceTest.,HIGH
+Deprecated dependency detected in project Job completed in 442 seconds.,MEDIUM
+Docker image built successfully and pushed to registry Dependency: Jackson.,LOW
+Application deployed successfully and health check passed Service: InventoryService.,LOW
+Code quality checks passed and coverage threshold achieved Test: LoginServiceTest.,LOW
+All workflow stages completed successfully Job completed in 241 seconds.,LOW
+All workflow stages completed successfully Environment: staging.,LOW
+Compilation failed because symbol could not be resolved Environment: production.,HIGH
+Deployment completed successfully to Kubernetes Environment: development.,LOW
+Maven build successful with no compilation errors Dependency: Spring Boot.,LOW
+Security scan completed with no vulnerabilities Test: UserServiceTest.,LOW
+Maven build successful with no compilation errors Test: PaymentIntegrationTest.,LOW
+SonarQube reported code quality warnings Test: LoginServiceTest.,MEDIUM
+All workflow stages completed successfully Workflow run number 5033.,LOW
+Kubernetes deployment failed with ImagePullBackOff Environment: production.,HIGH
+Flaky test detected but retry passed successfully Test: RepositoryTest.,MEDIUM
+Deployment failed because service was unavailable Dependency: PostgreSQL.,HIGH
+All workflow stages completed successfully Dependency: Spring Boot.,LOW
+Maven build failed due to unresolved dependency Service: AuthenticationService.,HIGH
+Compilation failed because symbol could not be resolved Workflow run number 8052.,HIGH
+Deployment failed because service was unavailable Environment: production.,HIGH
+Docker build failed because base image was not found Service: UserService.,HIGH
+Deployment completed successfully to Kubernetes Dependency: PostgreSQL.,LOW
+Container crashed with OutOfMemoryError,HIGH
+All unit tests and integration tests passed Job completed in 224 seconds.,LOW
+Maven build successful with no compilation errors,LOW
+Pipeline completed successfully with no errors Test: PaymentIntegrationTest.,LOW
+Deployment completed successfully to Kubernetes Environment: development.,LOW
+Kubernetes deployment failed with ImagePullBackOff Environment: staging.,HIGH
+Flaky test detected but retry passed successfully Environment: testing.,MEDIUM
+Docker image built successfully and pushed to registry,LOW
+SonarQube reported code quality warnings Test: OrderControllerTest.,MEDIUM
+Integration tests failed and pipeline was terminated Test: RepositoryTest.,HIGH
+Deprecated dependency detected in project Dependency: JUnit.,MEDIUM
+Compilation failed because symbol could not be resolved,HIGH
+SonarQube reported code quality warnings,MEDIUM
+Maven build successful with no compilation errors Service: PaymentService.,LOW
+Deployment failed because service was unavailable Environment: production.,HIGH
+Deployment timeout occurred but retry succeeded Job completed in 307 seconds.,MEDIUM
+Container crashed with OutOfMemoryError Dependency: Jackson.,HIGH
+All unit tests and integration tests passed Service: OrderService.,LOW
+SonarQube reported code quality warnings Job completed in 96 seconds.,MEDIUM
+Memory usage warning detected during compilation Job completed in 363 seconds.,MEDIUM
+Docker image size exceeded recommended limit Environment: development.,MEDIUM
+Maven build failed due to unresolved dependency Test: PaymentIntegrationTest.,HIGH
+Deployment failed because service was unavailable Job completed in 123 seconds.,HIGH
+Code coverage below recommended threshold,MEDIUM
+Memory usage warning detected during compilation Service: GatewayService.,MEDIUM
+All workflow stages completed successfully Environment: testing.,LOW
+Security scan completed with no vulnerabilities,LOW
+Deployment failed because service was unavailable Job completed in 303 seconds.,HIGH
+SonarQube reported code quality warnings,MEDIUM
+Pipeline completed successfully with no errors Job completed in 500 seconds.,LOW
+Minor configuration warning detected during deployment Job completed in 533 seconds.,MEDIUM
+Docker build failed because base image was not found Workflow run number 4104.,HIGH
+Maven build successful with no compilation errors Job completed in 206 seconds.,LOW
+Code quality checks passed and coverage threshold achieved Dependency: JUnit.,LOW
+Maven build successful with no compilation errors Workflow run number 9669.,LOW
+Code coverage below recommended threshold Service: AuthenticationService.,MEDIUM
+Unit test failed with assertion error and build stopped Workflow run number 1955.,HIGH
+Memory usage warning detected during compilation,MEDIUM
+Pipeline completed successfully with no errors Workflow run number 1711.,LOW
+Maven build failed due to unresolved dependency Environment: staging.,HIGH
+Deprecated dependency detected in project Test: LoginServiceTest.,MEDIUM
+Minor configuration warning detected during deployment,MEDIUM
+Minor configuration warning detected during deployment Workflow run number 9173.,MEDIUM
+Code coverage below recommended threshold Job completed in 508 seconds.,MEDIUM
+Code quality checks passed and coverage threshold achieved Dependency: JUnit.,LOW
+Integration tests failed and pipeline was terminated Test: LoginServiceTest.,HIGH
+Container crashed with OutOfMemoryError,HIGH
+Build completed successfully and all tests passed Dependency: Spring Boot.,LOW
+Application deployment failed because connection was refused Job completed in 537 seconds.,HIGH
+Integration tests failed and pipeline was terminated Service: PaymentService.,HIGH
+Flaky test detected but retry passed successfully Job completed in 394 seconds.,MEDIUM
+Docker build failed because base image was not found Job completed in 22 seconds.,HIGH
+Maven build successful with no compilation errors Workflow run number 6502.,LOW
+All unit tests and integration tests passed Job completed in 104 seconds.,LOW
+Maven build successful with no compilation errors Environment: testing.,LOW
+Security scan found critical vulnerabilities Service: UserService.,HIGH
+Deployment failed because service was unavailable Environment: development.,HIGH
+Flaky test detected but retry passed successfully,MEDIUM
+Memory usage warning detected during compilation,MEDIUM
+Code quality checks passed and coverage threshold achieved Test: UserServiceTest.,LOW
+Memory usage warning detected during compilation Workflow run number 9185.,MEDIUM
+All workflow stages completed successfully Job completed in 415 seconds.,LOW
+Pipeline completed successfully with no errors,LOW
+Maven build successful with no compilation errors Service: UserService.,LOW
+Compilation failed because symbol could not be resolved Dependency: Kubernetes client.,HIGH
+Deployment failed because service was unavailable Service: OrderService.,HIGH
+Security scan found critical vulnerabilities Test: LoginServiceTest.,HIGH
+Docker image built successfully and pushed to registry,LOW
+Minor configuration warning detected during deployment Environment: testing.,MEDIUM
+Docker build failed because base image was not found,HIGH
+Deprecated dependency detected in project Service: UserService.,MEDIUM
+Pipeline completed successfully with no errors,LOW
+Maven build successful with no compilation errors Job completed in 114 seconds.,LOW
+Compilation failed because symbol could not be resolved Environment: staging.,HIGH
+Application deployment failed because connection was refused Service: InventoryService.,HIGH
+Dependency version warning detected during build Environment: development.,MEDIUM
+Deployment failed because service was unavailable Environment: testing.,HIGH
+Dependency version warning detected during build Environment: staging.,MEDIUM
+Kubernetes deployment failed with ImagePullBackOff Dependency: Spring Boot.,HIGH
+Pipeline completed successfully with no errors Dependency: PostgreSQL.,LOW
+Maven build successful with no compilation errors Workflow run number 8172.,LOW
+Application deployed successfully and health check passed Test: PaymentIntegrationTest.,LOW
+Security scan completed with no vulnerabilities Service: OrderService.,LOW
+Deployment completed successfully to Kubernetes Job completed in 24 seconds.,LOW
+Security scan completed with no vulnerabilities Environment: testing.,LOW
+Compilation failed because symbol could not be resolved Dependency: Mockito.,HIGH
+Docker build failed because base image was not found Environment: development.,HIGH
+Flaky test detected but retry passed successfully Job completed in 236 seconds.,MEDIUM
+Minor configuration warning detected during deployment Test: OrderControllerTest.,MEDIUM
+Integration tests failed and pipeline was terminated Workflow run number 7382.,HIGH
+Application deployed successfully and health check passed Workflow run number 4139.,LOW
+Deprecated dependency detected in project Test: TaskServiceTest.,MEDIUM
+Network timeout occurred while downloading dependencies Workflow run number 5794.,MEDIUM
+Pipeline completed successfully with no errors,LOW
+Application deployed successfully and health check passed Service: UserService.,LOW
+Pipeline completed successfully with no errors Test: PaymentIntegrationTest.,LOW
+All workflow stages completed successfully Service: AuthenticationService.,LOW
+All workflow stages completed successfully Job completed in 280 seconds.,LOW
+Docker image size exceeded recommended limit Dependency: Kubernetes client.,MEDIUM
+Security scan found critical vulnerabilities,HIGH
+Deployment failed because service was unavailable Service: InventoryService.,HIGH
+Unit test failed with assertion error and build stopped Workflow run number 7457.,HIGH
+Pipeline completed successfully with no errors Job completed in 571 seconds.,LOW
+Code coverage below recommended threshold Test: LoginServiceTest.,MEDIUM
+Docker image built successfully and pushed to registry Job completed in 103 seconds.,LOW
+Security scan found critical vulnerabilities Environment: development.,HIGH
+All unit tests and integration tests passed Job completed in 556 seconds.,LOW
+Network timeout occurred while downloading dependencies Service: InventoryService.,MEDIUM
+Deprecated dependency detected in project Workflow run number 8765.,MEDIUM
+Maven build failed due to unresolved dependency Dependency: JUnit.,HIGH
+SonarQube reported code quality warnings Environment: staging.,MEDIUM
+Docker image size exceeded recommended limit,MEDIUM
+Dependency version warning detected during build Test: UserServiceTest.,MEDIUM
+Maven build failed due to unresolved dependency Workflow run number 1755.,HIGH
+Build completed successfully and all tests passed Environment: production.,LOW
+SonarQube reported code quality warnings Workflow run number 1082.,MEDIUM
+Minor configuration warning detected during deployment Test: PaymentIntegrationTest.,MEDIUM
+Network timeout occurred while downloading dependencies Environment: testing.,MEDIUM
+Code coverage below recommended threshold Workflow run number 4977.,MEDIUM
+Compilation failed because symbol could not be resolved Service: PaymentService.,HIGH
+Code quality checks passed and coverage threshold achieved,LOW
+Application deployment failed because connection was refused Service: UserService.,HIGH
+Security scan completed with no vulnerabilities,LOW
+Pipeline completed successfully with no errors,LOW
+Deployment timeout occurred but retry succeeded Dependency: Kubernetes client.,MEDIUM
+Memory usage warning detected during compilation Job completed in 155 seconds.,MEDIUM
+Docker image built successfully and pushed to registry Job completed in 345 seconds.,LOW
+Docker build failed because base image was not found Workflow run number 3643.,HIGH
+Compilation failed because symbol could not be resolved Workflow run number 8063.,HIGH
+Deployment timeout occurred but retry succeeded,MEDIUM
+Deployment timeout occurred but retry succeeded Job completed in 327 seconds.,MEDIUM
+Minor configuration warning detected during deployment Service: NotificationService.,MEDIUM
+Pipeline completed successfully with no errors Service: GatewayService.,LOW
+Deployment failed because service was unavailable Service: NotificationService.,HIGH
+Container crashed with OutOfMemoryError Job completed in 538 seconds.,HIGH
+Flaky test detected but retry passed successfully Environment: production.,MEDIUM
+Unit test failed with assertion error and build stopped,HIGH
+Security scan completed with no vulnerabilities,LOW
+Flaky test detected but retry passed successfully Dependency: Kubernetes client.,MEDIUM
+Docker image size exceeded recommended limit Service: GatewayService.,MEDIUM
+All unit tests and integration tests passed Dependency: Kubernetes client.,LOW
+Deployment failed because service was unavailable Workflow run number 4961.,HIGH
+Security scan found critical vulnerabilities Test: PaymentIntegrationTest.,HIGH
+Memory usage warning detected during compilation Environment: staging.,MEDIUM
+Dependency version warning detected during build Test: OrderControllerTest.,MEDIUM
+Maven build successful with no compilation errors Dependency: Jackson.,LOW
+Memory usage warning detected during compilation Test: OrderControllerTest.,MEDIUM
+Dependency version warning detected during build,MEDIUM
+All workflow stages completed successfully Test: TaskServiceTest.,LOW
+Maven build failed due to unresolved dependency Test: UserServiceTest.,HIGH
+All workflow stages completed successfully Job completed in 242 seconds.,LOW
+Maven build failed due to unresolved dependency Environment: staging.,HIGH
+All workflow stages completed successfully Test: UserServiceTest.,LOW
+Security scan found critical vulnerabilities,HIGH
+Memory usage warning detected during compilation Job completed in 315 seconds.,MEDIUM
+SonarQube reported code quality warnings Environment: testing.,MEDIUM
+Code quality checks passed and coverage threshold achieved,LOW
+Maven build failed due to unresolved dependency Environment: staging.,HIGH
+Minor configuration warning detected during deployment Dependency: Spring Boot.,MEDIUM
+Application deployed successfully and health check passed Workflow run number 5930.,LOW
+Docker image built successfully and pushed to registry Workflow run number 5833.,LOW
+Container crashed with OutOfMemoryError Workflow run number 3101.,HIGH
+Unit test failed with assertion error and build stopped Test: RepositoryTest.,HIGH
+All workflow stages completed successfully Workflow run number 7421.,LOW
+Dependency version warning detected during build Environment: staging.,MEDIUM
+Kubernetes deployment failed with ImagePullBackOff Job completed in 485 seconds.,HIGH
+Docker image built successfully and pushed to registry,LOW
+Docker image size exceeded recommended limit Workflow run number 8898.,MEDIUM
+Security scan completed with no vulnerabilities Dependency: Docker.,LOW
+Security scan completed with no vulnerabilities Job completed in 54 seconds.,LOW
+Maven build successful with no compilation errors Environment: development.,LOW
+Unit test failed with assertion error and build stopped Test: PaymentIntegrationTest.,HIGH
+Maven build successful with no compilation errors Workflow run number 3621.,LOW
+Container crashed with OutOfMemoryError Workflow run number 7617.,HIGH
+All unit tests and integration tests passed Dependency: Mockito.,LOW
+Security scan found critical vulnerabilities Dependency: Kubernetes client.,HIGH
+Build completed successfully and all tests passed Dependency: JUnit.,LOW
+Application deployment failed because connection was refused Service: InventoryService.,HIGH
+All workflow stages completed successfully Job completed in 306 seconds.,LOW
+Code quality checks passed and coverage threshold achieved Dependency: Jackson.,LOW
+Docker image size exceeded recommended limit Environment: development.,MEDIUM
+Flaky test detected but retry passed successfully,MEDIUM
+All unit tests and integration tests passed,LOW
+Deployment timeout occurred but retry succeeded Test: OrderControllerTest.,MEDIUM
+SonarQube reported code quality warnings,MEDIUM
+Network timeout occurred while downloading dependencies Service: PaymentService.,MEDIUM
+Application deployed successfully and health check passed Service: InventoryService.,LOW
+Memory usage warning detected during compilation,MEDIUM
+SonarQube reported code quality warnings Dependency: Spring Boot.,MEDIUM
+Deployment completed successfully to Kubernetes Service: OrderService.,LOW
+Deployment failed because service was unavailable Workflow run number 4022.,HIGH
+Security scan completed with no vulnerabilities Environment: development.,LOW
+Network timeout occurred while downloading dependencies Test: UserServiceTest.,MEDIUM
+Application deployment failed because connection was refused Workflow run number 8239.,HIGH
+Docker image built successfully and pushed to registry Workflow run number 9850.,LOW
+Security scan found critical vulnerabilities Dependency: Spring Boot.,HIGH
+Kubernetes deployment failed with ImagePullBackOff Test: UserServiceTest.,HIGH
+Integration tests failed and pipeline was terminated Dependency: Mockito.,HIGH
+Application deployed successfully and health check passed Dependency: Jackson.,LOW
+Code coverage below recommended threshold Service: GatewayService.,MEDIUM
+Deployment failed because service was unavailable Environment: development.,HIGH
+Application deployment failed because connection was refused Dependency: Jackson.,HIGH
+Kubernetes deployment failed with ImagePullBackOff,HIGH
+Compilation failed because symbol could not be resolved Environment: production.,HIGH
+Memory usage warning detected during compilation Service: PaymentService.,MEDIUM
+Docker image size exceeded recommended limit Job completed in 83 seconds.,MEDIUM
+All workflow stages completed successfully Workflow run number 1936.,LOW
+Application deployed successfully and health check passed Service: AuthenticationService.,LOW
+Security scan completed with no vulnerabilities Workflow run number 7523.,LOW
+Unit test failed with assertion error and build stopped Job completed in 305 seconds.,HIGH
+Unit test failed with assertion error and build stopped Environment: production.,HIGH
+Docker image size exceeded recommended limit Dependency: PostgreSQL.,MEDIUM
+Maven build failed due to unresolved dependency Service: InventoryService.,HIGH
+Memory usage warning detected during compilation Environment: production.,MEDIUM
+Code quality checks passed and coverage threshold achieved,LOW
+Deployment completed successfully to Kubernetes Job completed in 112 seconds.,LOW
+Build completed successfully and all tests passed Test: OrderControllerTest.,LOW
+Build completed successfully and all tests passed,LOW
+Deployment completed successfully to Kubernetes Service: GatewayService.,LOW
+Docker image built successfully and pushed to registry Environment: staging.,LOW
+Deployment completed successfully to Kubernetes Job completed in 101 seconds.,LOW
+Pipeline completed successfully with no errors Job completed in 549 seconds.,LOW
+Security scan completed with no vulnerabilities,LOW
+Container crashed with OutOfMemoryError,HIGH
+Dependency version warning detected during build Dependency: Docker.,MEDIUM
+Unit test failed with assertion error and build stopped Workflow run number 1476.,HIGH
+Unit test failed with assertion error and build stopped Workflow run number 8808.,HIGH
+Code quality checks passed and coverage threshold achieved Test: OrderControllerTest.,LOW
+Docker image built successfully and pushed to registry Service: NotificationService.,LOW
+Kubernetes deployment failed with ImagePullBackOff Job completed in 267 seconds.,HIGH
+Docker image size exceeded recommended limit Workflow run number 7165.,MEDIUM
+Deployment timeout occurred but retry succeeded Dependency: Docker.,MEDIUM
+Maven build successful with no compilation errors Dependency: Spring Boot.,LOW
+Compilation failed because symbol could not be resolved Test: TaskServiceTest.,HIGH
+Container crashed with OutOfMemoryError Environment: staging.,HIGH
+Flaky test detected but retry passed successfully Job completed in 50 seconds.,MEDIUM
+All workflow stages completed successfully Dependency: Mockito.,LOW
+Integration tests failed and pipeline was terminated,HIGH
+Application deployment failed because connection was refused Dependency: Mockito.,HIGH
+Network timeout occurred while downloading dependencies Workflow run number 6614.,MEDIUM
+Pipeline completed successfully with no errors Test: UserServiceTest.,LOW
+Pipeline completed successfully with no errors Test: UserServiceTest.,LOW
+Docker image size exceeded recommended limit Dependency: JUnit.,MEDIUM
+Security scan found critical vulnerabilities Workflow run number 6797.,HIGH
+Container crashed with OutOfMemoryError Service: NotificationService.,HIGH
+Docker build failed because base image was not found Environment: testing.,HIGH
+Security scan completed with no vulnerabilities Job completed in 119 seconds.,LOW
+Network timeout occurred while downloading dependencies,MEDIUM
+Build completed successfully and all tests passed Environment: development.,LOW
+Dependency version warning detected during build Workflow run number 4287.,MEDIUM
+Compilation failed because symbol could not be resolved Dependency: Spring Boot.,HIGH
+Application deployment failed because connection was refused Job completed in 31 seconds.,HIGH
+Kubernetes deployment failed with ImagePullBackOff Test: OrderControllerTest.,HIGH
+Application deployed successfully and health check passed Job completed in 190 seconds.,LOW
+Minor configuration warning detected during deployment Dependency: PostgreSQL.,MEDIUM
+Code quality checks passed and coverage threshold achieved Job completed in 361 seconds.,LOW
+Kubernetes deployment failed with ImagePullBackOff Service: UserService.,HIGH
+Container crashed with OutOfMemoryError Test: TaskServiceTest.,HIGH
+Maven build successful with no compilation errors Environment: development.,LOW
+Code coverage below recommended threshold Test: RepositoryTest.,MEDIUM
+Code quality checks passed and coverage threshold achieved Test: PaymentIntegrationTest.,LOW
+Compilation failed because symbol could not be resolved Test: LoginServiceTest.,HIGH
+Compilation failed because symbol could not be resolved Workflow run number 8065.,HIGH
+Deployment completed successfully to Kubernetes Dependency: Jackson.,LOW
+Memory usage warning detected during compilation Dependency: JUnit.,MEDIUM
+Kubernetes deployment failed with ImagePullBackOff,HIGH
+Dependency version warning detected during build Workflow run number 8469.,MEDIUM
+Docker image size exceeded recommended limit Workflow run number 5990.,MEDIUM
+Security scan found critical vulnerabilities Workflow run number 9856.,HIGH
+Application deployed successfully and health check passed Job completed in 334 seconds.,LOW
+Security scan completed with no vulnerabilities Dependency: Kubernetes client.,LOW
+Security scan found critical vulnerabilities,HIGH
+Deployment completed successfully to Kubernetes Test: RepositoryTest.,LOW
+Container crashed with OutOfMemoryError Dependency: JUnit.,HIGH
+Docker image size exceeded recommended limit Service: GatewayService.,MEDIUM
+Security scan found critical vulnerabilities Environment: production.,HIGH
+Unit test failed with assertion error and build stopped Dependency: Spring Boot.,HIGH
+Flaky test detected but retry passed successfully Service: UserService.,MEDIUM
+Kubernetes deployment failed with ImagePullBackOff Dependency: Spring Boot.,HIGH
+Security scan completed with no vulnerabilities Environment: production.,LOW
+Deployment timeout occurred but retry succeeded Test: PaymentIntegrationTest.,MEDIUM
+Kubernetes deployment failed with ImagePullBackOff Job completed in 157 seconds.,HIGH
+Maven build failed due to unresolved dependency Job completed in 543 seconds.,HIGH
+Build completed successfully and all tests passed Job completed in 82 seconds.,LOW
+Application deployment failed because connection was refused Dependency: PostgreSQL.,HIGH
+Security scan found critical vulnerabilities Workflow run number 6640.,HIGH
+Compilation failed because symbol could not be resolved Job completed in 152 seconds.,HIGH
+Application deployed successfully and health check passed Service: NotificationService.,LOW
+Kubernetes deployment failed with ImagePullBackOff,HIGH
+Pipeline completed successfully with no errors Test: RepositoryTest.,LOW
+Maven build successful with no compilation errors Test: TaskServiceTest.,LOW
+Deprecated dependency detected in project Test: LoginServiceTest.,MEDIUM
+Integration tests failed and pipeline was terminated Service: NotificationService.,HIGH
+Compilation failed because symbol could not be resolved Environment: production.,HIGH
+Integration tests failed and pipeline was terminated,HIGH
+Application deployed successfully and health check passed Environment: development.,LOW
+Docker image size exceeded recommended limit Service: NotificationService.,MEDIUM
+Dependency version warning detected during build Dependency: Spring Boot.,MEDIUM
+Deprecated dependency detected in project Workflow run number 6008.,MEDIUM
+Deployment completed successfully to Kubernetes Service: GatewayService.,LOW
+Unit test failed with assertion error and build stopped Service: GatewayService.,HIGH
+Compilation failed because symbol could not be resolved,HIGH
+Unit test failed with assertion error and build stopped Workflow run number 2617.,HIGH
+Minor configuration warning detected during deployment Dependency: Docker.,MEDIUM
+Minor configuration warning detected during deployment Workflow run number 3451.,MEDIUM
+Code coverage below recommended threshold Job completed in 210 seconds.,MEDIUM
+Network timeout occurred while downloading dependencies Dependency: Spring Boot.,MEDIUM
+Unit test failed with assertion error and build stopped,HIGH
+Deployment completed successfully to Kubernetes Workflow run number 8355.,LOW
+Code coverage below recommended threshold Service: OrderService.,MEDIUM
+Kubernetes deployment failed with ImagePullBackOff Environment: staging.,HIGH
+Deprecated dependency detected in project Service: NotificationService.,MEDIUM
+SonarQube reported code quality warnings Workflow run number 7290.,MEDIUM
+Deprecated dependency detected in project Dependency: Mockito.,MEDIUM
+Integration tests failed and pipeline was terminated,HIGH
+Docker image size exceeded recommended limit Service: GatewayService.,MEDIUM
+Container crashed with OutOfMemoryError Environment: staging.,HIGH
+Deployment failed because service was unavailable Workflow run number 4387.,HIGH
+Compilation failed because symbol could not be resolved Test: TaskServiceTest.,HIGH
+Docker build failed because base image was not found Service: AuthenticationService.,HIGH
+Docker image size exceeded recommended limit Dependency: Docker.,MEDIUM
+Deprecated dependency detected in project Service: AuthenticationService.,MEDIUM
+Maven build failed due to unresolved dependency Workflow run number 6927.,HIGH
+Deployment failed because service was unavailable Dependency: Mockito.,HIGH
+Deployment failed because service was unavailable Service: InventoryService.,HIGH
+Deployment failed because service was unavailable Environment: testing.,HIGH
+Security scan found critical vulnerabilities,HIGH
+Docker image size exceeded recommended limit Workflow run number 8178.,MEDIUM
+Kubernetes deployment failed with ImagePullBackOff Environment: staging.,HIGH
+Docker image built successfully and pushed to registry Service: PaymentService.,LOW
+Build completed successfully and all tests passed Job completed in 458 seconds.,LOW
+Deployment timeout occurred but retry succeeded Service: InventoryService.,MEDIUM
+Memory usage warning detected during compilation,MEDIUM
+Deployment failed because service was unavailable Dependency: Docker.,HIGH
+Docker image size exceeded recommended limit Environment: staging.,MEDIUM
+Deployment timeout occurred but retry succeeded Workflow run number 7761.,MEDIUM
+Kubernetes deployment failed with ImagePullBackOff Job completed in 401 seconds.,HIGH
+Network timeout occurred while downloading dependencies Dependency: Kubernetes client.,MEDIUM
+Security scan found critical vulnerabilities,HIGH
+Deprecated dependency detected in project Job completed in 543 seconds.,MEDIUM
+Application deployed successfully and health check passed Workflow run number 9837.,LOW
+Application deployed successfully and health check passed Environment: development.,LOW
+SonarQube reported code quality warnings Workflow run number 2245.,MEDIUM
+Deprecated dependency detected in project Environment: staging.,MEDIUM
+Application deployment failed because connection was refused Job completed in 125 seconds.,HIGH
+Deployment completed successfully to Kubernetes Dependency: JUnit.,LOW
+Security scan found critical vulnerabilities Environment: staging.,HIGH
+Maven build failed due to unresolved dependency Workflow run number 3450.,HIGH
+Maven build failed due to unresolved dependency Workflow run number 8298.,HIGH
+Docker image built successfully and pushed to registry Test: UserServiceTest.,LOW
+Deprecated dependency detected in project,MEDIUM
+Deployment timeout occurred but retry succeeded Job completed in 141 seconds.,MEDIUM
+Pipeline completed successfully with no errors Job completed in 236 seconds.,LOW
+Memory usage warning detected during compilation Service: AuthenticationService.,MEDIUM
+Docker image size exceeded recommended limit Job completed in 92 seconds.,MEDIUM
+Integration tests failed and pipeline was terminated Test: RepositoryTest.,HIGH
+Dependency version warning detected during build Service: InventoryService.,MEDIUM
+Code quality checks passed and coverage threshold achieved Test: UserServiceTest.,LOW
+Compilation failed because symbol could not be resolved Environment: testing.,HIGH
+Deployment completed successfully to Kubernetes Service: AuthenticationService.,LOW
+Code quality checks passed and coverage threshold achieved Test: RepositoryTest.,LOW
+Build completed successfully and all tests passed Service: PaymentService.,LOW
+Deployment completed successfully to Kubernetes,LOW
+Deployment failed because service was unavailable Job completed in 100 seconds.,HIGH
+Unit test failed with assertion error and build stopped Test: PaymentIntegrationTest.,HIGH
+Maven build successful with no compilation errors Job completed in 416 seconds.,LOW
+Maven build failed due to unresolved dependency Workflow run number 5530.,HIGH
+Security scan completed with no vulnerabilities Test: RepositoryTest.,LOW
+All workflow stages completed successfully,LOW
+Dependency version warning detected during build Service: UserService.,MEDIUM
+Compilation failed because symbol could not be resolved,HIGH
+Minor configuration warning detected during deployment Test: PaymentIntegrationTest.,MEDIUM
+Minor configuration warning detected during deployment Job completed in 482 seconds.,MEDIUM
+Deployment completed successfully to Kubernetes Service: NotificationService.,LOW
+Deprecated dependency detected in project Workflow run number 5040.,MEDIUM
+All workflow stages completed successfully Test: TaskServiceTest.,LOW
+Compilation failed because symbol could not be resolved Environment: development.,HIGH
+Code coverage below recommended threshold,MEDIUM
+Integration tests failed and pipeline was terminated Dependency: Docker.,HIGH
+Dependency version warning detected during build Workflow run number 3692.,MEDIUM
+Docker build failed because base image was not found Environment: production.,HIGH
+Integration tests failed and pipeline was terminated Job completed in 67 seconds.,HIGH
+Deployment timeout occurred but retry succeeded Dependency: Mockito.,MEDIUM
+Minor configuration warning detected during deployment Service: GatewayService.,MEDIUM
+Pipeline completed successfully with no errors Test: LoginServiceTest.,LOW
+Unit test failed with assertion error and build stopped Job completed in 160 seconds.,HIGH
+Deployment completed successfully to Kubernetes Test: UserServiceTest.,LOW
+Deployment timeout occurred but retry succeeded Environment: testing.,MEDIUM
+Maven build failed due to unresolved dependency Test: OrderControllerTest.,HIGH
+Flaky test detected but retry passed successfully,MEDIUM
+Network timeout occurred while downloading dependencies Job completed in 348 seconds.,MEDIUM
+Minor configuration warning detected during deployment Service: UserService.,MEDIUM
+Docker image size exceeded recommended limit Job completed in 408 seconds.,MEDIUM
+Kubernetes deployment failed with ImagePullBackOff Job completed in 197 seconds.,HIGH
+Kubernetes deployment failed with ImagePullBackOff Service: AuthenticationService.,HIGH
+Code quality checks passed and coverage threshold achieved Workflow run number 4968.,LOW
+Minor configuration warning detected during deployment Job completed in 576 seconds.,MEDIUM
+Deployment timeout occurred but retry succeeded,MEDIUM
+Docker build failed because base image was not found Service: PaymentService.,HIGH
+Network timeout occurred while downloading dependencies Workflow run number 6542.,MEDIUM
+Docker image size exceeded recommended limit Service: GatewayService.,MEDIUM
+Unit test failed with assertion error and build stopped Workflow run number 7109.,HIGH
+Deployment failed because service was unavailable Environment: development.,HIGH
+Maven build failed due to unresolved dependency,HIGH
+Minor configuration warning detected during deployment Dependency: Docker.,MEDIUM
+SonarQube reported code quality warnings Environment: development.,MEDIUM
+All workflow stages completed successfully,LOW
+Code quality checks passed and coverage threshold achieved Workflow run number 5961.,LOW
+Code coverage below recommended threshold Job completed in 529 seconds.,MEDIUM
+Memory usage warning detected during compilation Service: GatewayService.,MEDIUM
+Pipeline completed successfully with no errors Test: RepositoryTest.,LOW
+Application deployment failed because connection was refused Dependency: Spring Boot.,HIGH
+Integration tests failed and pipeline was terminated Dependency: PostgreSQL.,HIGH
+All workflow stages completed successfully Test: UserServiceTest.,LOW
+Network timeout occurred while downloading dependencies,MEDIUM
+SonarQube reported code quality warnings Environment: testing.,MEDIUM
+Compilation failed because symbol could not be resolved Job completed in 169 seconds.,HIGH
+Deployment timeout occurred but retry succeeded Service: UserService.,MEDIUM
+Network timeout occurred while downloading dependencies Workflow run number 8955.,MEDIUM
+Unit test failed with assertion error and build stopped Service: AuthenticationService.,HIGH
+Pipeline completed successfully with no errors Service: InventoryService.,LOW
+SonarQube reported code quality warnings Workflow run number 2380.,MEDIUM
+Deployment completed successfully to Kubernetes Dependency: Jackson.,LOW
+Deployment completed successfully to Kubernetes,LOW
+All unit tests and integration tests passed Dependency: Mockito.,LOW
+Flaky test detected but retry passed successfully Environment: production.,MEDIUM
+Kubernetes deployment failed with ImagePullBackOff,HIGH
+Kubernetes deployment failed with ImagePullBackOff Environment: staging.,HIGH
+Application deployment failed because connection was refused Workflow run number 4089.,HIGH
+Docker image built successfully and pushed to registry,LOW
+Minor configuration warning detected during deployment Workflow run number 4951.,MEDIUM
+Integration tests failed and pipeline was terminated Workflow run number 2124.,HIGH
+Compilation failed because symbol could not be resolved Test: RepositoryTest.,HIGH
+Application deployed successfully and health check passed Dependency: PostgreSQL.,LOW
+Security scan completed with no vulnerabilities Test: RepositoryTest.,LOW
+Minor configuration warning detected during deployment Environment: testing.,MEDIUM
+Code coverage below recommended threshold Job completed in 432 seconds.,MEDIUM
+Deployment completed successfully to Kubernetes Environment: development.,LOW
+Maven build successful with no compilation errors Service: NotificationService.,LOW
+Kubernetes deployment failed with ImagePullBackOff Job completed in 258 seconds.,HIGH
+Security scan completed with no vulnerabilities,LOW
+Security scan completed with no vulnerabilities Workflow run number 2293.,LOW
+Application deployed successfully and health check passed Job completed in 201 seconds.,LOW
+Container crashed with OutOfMemoryError Service: InventoryService.,HIGH
+SonarQube reported code quality warnings,MEDIUM
+Deprecated dependency detected in project Environment: production.,MEDIUM
+Application deployment failed because connection was refused Environment: testing.,HIGH
+Integration tests failed and pipeline was terminated,HIGH
+Container crashed with OutOfMemoryError Dependency: Jackson.,HIGH
+Maven build successful with no compilation errors Service: OrderService.,LOW
+Security scan completed with no vulnerabilities Service: PaymentService.,LOW
+Maven build failed due to unresolved dependency Test: RepositoryTest.,HIGH
+All workflow stages completed successfully Environment: production.,LOW
+Security scan completed with no vulnerabilities Job completed in 452 seconds.,LOW
+Integration tests failed and pipeline was terminated Dependency: Jackson.,HIGH
+Deprecated dependency detected in project Workflow run number 3338.,MEDIUM
+Code coverage below recommended threshold Test: LoginServiceTest.,MEDIUM
+All workflow stages completed successfully,LOW
+Container crashed with OutOfMemoryError Job completed in 66 seconds.,HIGH
+Compilation failed because symbol could not be resolved Job completed in 192 seconds.,HIGH
+Compilation failed because symbol could not be resolved Dependency: PostgreSQL.,HIGH
+Docker image built successfully and pushed to registry Dependency: Jackson.,LOW
+Code quality checks passed and coverage threshold achieved Workflow run number 4084.,LOW
+Network timeout occurred while downloading dependencies Test: LoginServiceTest.,MEDIUM
+Container crashed with OutOfMemoryError Test: TaskServiceTest.,HIGH
+Docker build failed because base image was not found Job completed in 306 seconds.,HIGH
+Minor configuration warning detected during deployment Workflow run number 1706.,MEDIUM
+Code coverage below recommended threshold Dependency: Docker.,MEDIUM
+Deprecated dependency detected in project Dependency: JUnit.,MEDIUM
+SonarQube reported code quality warnings Environment: development.,MEDIUM
+Maven build successful with no compilation errors Environment: production.,LOW
+Deployment timeout occurred but retry succeeded Environment: production.,MEDIUM
+Deployment failed because service was unavailable Dependency: Kubernetes client.,HIGH
+Application deployment failed because connection was refused Job completed in 316 seconds.,HIGH
+Maven build failed due to unresolved dependency Service: PaymentService.,HIGH
+Deployment completed successfully to Kubernetes Job completed in 266 seconds.,LOW
+Build completed successfully and all tests passed Dependency: Spring Boot.,LOW
+All unit tests and integration tests passed Workflow run number 4886.,LOW
+Dependency version warning detected during build Environment: testing.,MEDIUM
+Flaky test detected but retry passed successfully Service: UserService.,MEDIUM
+Docker build failed because base image was not found Dependency: Spring Boot.,HIGH
+Application deployed successfully and health check passed Workflow run number 2146.,LOW
+Deployment timeout occurred but retry succeeded,MEDIUM
+Build completed successfully and all tests passed Test: TaskServiceTest.,LOW
+Memory usage warning detected during compilation Workflow run number 3435.,MEDIUM
+Maven build successful with no compilation errors Job completed in 140 seconds.,LOW
+Container crashed with OutOfMemoryError,HIGH
+Security scan completed with no vulnerabilities Test: TaskServiceTest.,LOW
+Maven build failed due to unresolved dependency,HIGH
+Build completed successfully and all tests passed,LOW
+SonarQube reported code quality warnings Job completed in 146 seconds.,MEDIUM
+Dependency version warning detected during build Test: OrderControllerTest.,MEDIUM
+Security scan completed with no vulnerabilities Environment: development.,LOW
+Maven build failed due to unresolved dependency Job completed in 271 seconds.,HIGH
+Deprecated dependency detected in project Service: AuthenticationService.,MEDIUM
+Container crashed with OutOfMemoryError Workflow run number 5705.,HIGH
+Security scan completed with no vulnerabilities Test: LoginServiceTest.,LOW
+Docker image size exceeded recommended limit Workflow run number 9791.,MEDIUM
+Application deployed successfully and health check passed Service: AuthenticationService.,LOW
+Memory usage warning detected during compilation Dependency: Mockito.,MEDIUM
+Code quality checks passed and coverage threshold achieved Environment: production.,LOW
+Docker build failed because base image was not found,HIGH
+Flaky test detected but retry passed successfully,MEDIUM
+Maven build failed due to unresolved dependency Dependency: Spring Boot.,HIGH
+Minor configuration warning detected during deployment Workflow run number 5942.,MEDIUM
+Application deployment failed because connection was refused Environment: production.,HIGH
+Docker image size exceeded recommended limit Job completed in 361 seconds.,MEDIUM
+Deployment completed successfully to Kubernetes Dependency: PostgreSQL.,LOW
+Compilation failed because symbol could not be resolved Service: PaymentService.,HIGH
+Network timeout occurred while downloading dependencies Service: OrderService.,MEDIUM
+Code quality checks passed and coverage threshold achieved,LOW
+Security scan completed with no vulnerabilities Dependency: Kubernetes client.,LOW
+Container crashed with OutOfMemoryError Test: UserServiceTest.,HIGH
+Dependency version warning detected during build Workflow run number 9898.,MEDIUM
+Docker image built successfully and pushed to registry Job completed in 498 seconds.,LOW
+Application deployed successfully and health check passed Job completed in 143 seconds.,LOW
+Build completed successfully and all tests passed,LOW
+Deployment completed successfully to Kubernetes Workflow run number 2020.,LOW
+Container crashed with OutOfMemoryError Job completed in 341 seconds.,HIGH
+Minor configuration warning detected during deployment Dependency: JUnit.,MEDIUM
+Application deployed successfully and health check passed Environment: staging.,LOW
+Minor configuration warning detected during deployment Environment: staging.,MEDIUM
+Compilation failed because symbol could not be resolved Environment: production.,HIGH
+Docker image size exceeded recommended limit Service: GatewayService.,MEDIUM
+Application deployment failed because connection was refused Workflow run number 5521.,HIGH
+All workflow stages completed successfully,LOW
+Pipeline completed successfully with no errors Environment: testing.,LOW
+Flaky test detected but retry passed successfully Workflow run number 1265.,MEDIUM
+Docker image size exceeded recommended limit Job completed in 595 seconds.,MEDIUM
+Code coverage below recommended threshold Dependency: Jackson.,MEDIUM
+Minor configuration warning detected during deployment Dependency: PostgreSQL.,MEDIUM
+Compilation failed because symbol could not be resolved Service: InventoryService.,HIGH
+All workflow stages completed successfully Job completed in 445 seconds.,LOW
+Network timeout occurred while downloading dependencies Dependency: Kubernetes client.,MEDIUM
+Deployment completed successfully to Kubernetes,LOW
+Kubernetes deployment failed with ImagePullBackOff Dependency: Docker.,HIGH
+Memory usage warning detected during compilation,MEDIUM
+Network timeout occurred while downloading dependencies Dependency: Kubernetes client.,MEDIUM
+All unit tests and integration tests passed Dependency: PostgreSQL.,LOW
+Deployment completed successfully to Kubernetes,LOW
+Container crashed with OutOfMemoryError Service: PaymentService.,HIGH
+Memory usage warning detected during compilation,MEDIUM
+All unit tests and integration tests passed Service: InventoryService.,LOW
+Deployment timeout occurred but retry succeeded Service: InventoryService.,MEDIUM
+Deprecated dependency detected in project Test: UserServiceTest.,MEDIUM
+Minor configuration warning detected during deployment Test: RepositoryTest.,MEDIUM
+SonarQube reported code quality warnings Service: PaymentService.,MEDIUM
+Docker build failed because base image was not found Test: UserServiceTest.,HIGH
+Code quality checks passed and coverage threshold achieved Service: NotificationService.,LOW
+Build completed successfully and all tests passed Environment: production.,LOW
+Deprecated dependency detected in project Test: RepositoryTest.,MEDIUM
+Pipeline completed successfully with no errors Workflow run number 9689.,LOW
+Pipeline completed successfully with no errors Test: LoginServiceTest.,LOW
+Deprecated dependency detected in project Dependency: Jackson.,MEDIUM
+All workflow stages completed successfully Job completed in 240 seconds.,LOW
+Pipeline completed successfully with no errors Dependency: Spring Boot.,LOW
+Security scan found critical vulnerabilities Test: UserServiceTest.,HIGH
+Maven build successful with no compilation errors Workflow run number 4266.,LOW
+Memory usage warning detected during compilation Job completed in 147 seconds.,MEDIUM
+Application deployed successfully and health check passed Test: RepositoryTest.,LOW
+All workflow stages completed successfully,LOW
+All unit tests and integration tests passed Job completed in 180 seconds.,LOW
+Flaky test detected but retry passed successfully Dependency: Spring Boot.,MEDIUM
+Maven build failed due to unresolved dependency,HIGH
+Deployment failed because service was unavailable Workflow run number 4493.,HIGH
+Container crashed with OutOfMemoryError Test: UserServiceTest.,HIGH
+Deployment timeout occurred but retry succeeded Workflow run number 7114.,MEDIUM
+Integration tests failed and pipeline was terminated Workflow run number 8951.,HIGH
+Security scan completed with no vulnerabilities Workflow run number 7658.,LOW
+Docker image size exceeded recommended limit Test: TaskServiceTest.,MEDIUM
+Docker image size exceeded recommended limit,MEDIUM
+Deployment failed because service was unavailable Service: PaymentService.,HIGH
+Minor configuration warning detected during deployment Test: LoginServiceTest.,MEDIUM
+Memory usage warning detected during compilation Test: PaymentIntegrationTest.,MEDIUM
+Compilation failed because symbol could not be resolved Dependency: Kubernetes client.,HIGH
+Kubernetes deployment failed with ImagePullBackOff Test: PaymentIntegrationTest.,HIGH
+Security scan completed with no vulnerabilities Environment: staging.,LOW
+Docker build failed because base image was not found Test: PaymentIntegrationTest.,HIGH
+Deployment completed successfully to Kubernetes Workflow run number 3167.,LOW
+Pipeline completed successfully with no errors Job completed in 326 seconds.,LOW
+Pipeline completed successfully with no errors Job completed in 140 seconds.,LOW
+Build completed successfully and all tests passed Workflow run number 4728.,LOW
+Dependency version warning detected during build Service: NotificationService.,MEDIUM
+Deprecated dependency detected in project,MEDIUM
+Code coverage below recommended threshold,MEDIUM
+Flaky test detected but retry passed successfully Dependency: Spring Boot.,MEDIUM
+Docker image built successfully and pushed to registry Job completed in 524 seconds.,LOW
+Network timeout occurred while downloading dependencies Test: PaymentIntegrationTest.,MEDIUM
+Maven build successful with no compilation errors Job completed in 419 seconds.,LOW
+Network timeout occurred while downloading dependencies,MEDIUM
+Application deployed successfully and health check passed Test: UserServiceTest.,LOW
+Dependency version warning detected during build,MEDIUM
+Unit test failed with assertion error and build stopped Test: OrderControllerTest.,HIGH
+Network timeout occurred while downloading dependencies Workflow run number 6883.,MEDIUM
+Memory usage warning detected during compilation,MEDIUM
+Deployment timeout occurred but retry succeeded,MEDIUM
+Kubernetes deployment failed with ImagePullBackOff Service: InventoryService.,HIGH
+Minor configuration warning detected during deployment Dependency: Mockito.,MEDIUM
+Docker image size exceeded recommended limit,MEDIUM
+Kubernetes deployment failed with ImagePullBackOff Test: TaskServiceTest.,HIGH
+Deprecated dependency detected in project Test: OrderControllerTest.,MEDIUM
+Minor configuration warning detected during deployment Job completed in 14 seconds.,MEDIUM
+Container crashed with OutOfMemoryError,HIGH
+Application deployment failed because connection was refused,HIGH
+Kubernetes deployment failed with ImagePullBackOff Service: UserService.,HIGH
+Integration tests failed and pipeline was terminated Dependency: PostgreSQL.,HIGH
+Pipeline completed successfully with no errors Service: NotificationService.,LOW
+Kubernetes deployment failed with ImagePullBackOff Workflow run number 6544.,HIGH
+Container crashed with OutOfMemoryError Service: GatewayService.,HIGH
+Code quality checks passed and coverage threshold achieved Test: RepositoryTest.,LOW
+Maven build failed due to unresolved dependency Environment: staging.,HIGH
+Security scan completed with no vulnerabilities Service: GatewayService.,LOW
+Code coverage below recommended threshold Service: AuthenticationService.,MEDIUM
+Dependency version warning detected during build Service: OrderService.,MEDIUM
+Code coverage below recommended threshold Service: OrderService.,MEDIUM
+Code quality checks passed and coverage threshold achieved Dependency: PostgreSQL.,LOW
+Network timeout occurred while downloading dependencies Environment: testing.,MEDIUM
+Docker image size exceeded recommended limit Test: RepositoryTest.,MEDIUM
+Integration tests failed and pipeline was terminated Environment: production.,HIGH
+Flaky test detected but retry passed successfully Workflow run number 7895.,MEDIUM
+Code quality checks passed and coverage threshold achieved,LOW
+All unit tests and integration tests passed,LOW
+Network timeout occurred while downloading dependencies Test: RepositoryTest.,MEDIUM
+Deployment timeout occurred but retry succeeded Workflow run number 2442.,MEDIUM
+Network timeout occurred while downloading dependencies Service: InventoryService.,MEDIUM
+Flaky test detected but retry passed successfully,MEDIUM
+Maven build successful with no compilation errors Job completed in 340 seconds.,LOW
+Security scan found critical vulnerabilities Job completed in 73 seconds.,HIGH
+Dependency version warning detected during build Service: PaymentService.,MEDIUM
+Security scan found critical vulnerabilities Environment: staging.,HIGH
+Build completed successfully and all tests passed Environment: development.,LOW
+Docker image built successfully and pushed to registry,LOW
+Docker build failed because base image was not found Test: OrderControllerTest.,HIGH
+Docker image size exceeded recommended limit Dependency: Jackson.,MEDIUM
+Compilation failed because symbol could not be resolved Service: OrderService.,HIGH
+Security scan found critical vulnerabilities,HIGH
+Maven build failed due to unresolved dependency Dependency: Spring Boot.,HIGH
+Minor configuration warning detected during deployment Environment: staging.,MEDIUM
+Deployment timeout occurred but retry succeeded Test: UserServiceTest.,MEDIUM
+Code quality checks passed and coverage threshold achieved,LOW
+Code quality checks passed and coverage threshold achieved Test: RepositoryTest.,LOW
+Network timeout occurred while downloading dependencies Environment: testing.,MEDIUM
+SonarQube reported code quality warnings Service: InventoryService.,MEDIUM
+Minor configuration warning detected during deployment Test: PaymentIntegrationTest.,MEDIUM
+Maven build failed due to unresolved dependency,HIGH
+Build completed successfully and all tests passed Workflow run number 6413.,LOW
+Deprecated dependency detected in project,MEDIUM
+Unit test failed with assertion error and build stopped,HIGH
+Maven build failed due to unresolved dependency Job completed in 588 seconds.,HIGH
+Integration tests failed and pipeline was terminated Job completed in 543 seconds.,HIGH
+Application deployed successfully and health check passed Service: PaymentService.,LOW
+Pipeline completed successfully with no errors,LOW
+Application deployment failed because connection was refused Test: RepositoryTest.,HIGH
+Code quality checks passed and coverage threshold achieved Test: RepositoryTest.,LOW
+Code coverage below recommended threshold Environment: production.,MEDIUM
+Dependency version warning detected during build Service: AuthenticationService.,MEDIUM
+Pipeline completed successfully with no errors Dependency: Spring Boot.,LOW
+Kubernetes deployment failed with ImagePullBackOff Workflow run number 5773.,HIGH
+Kubernetes deployment failed with ImagePullBackOff Environment: development.,HIGH
+Docker image size exceeded recommended limit Test: TaskServiceTest.,MEDIUM
+Code quality checks passed and coverage threshold achieved,LOW
+Deployment failed because service was unavailable Dependency: Docker.,HIGH
+Docker image size exceeded recommended limit Test: UserServiceTest.,MEDIUM
+Kubernetes deployment failed with ImagePullBackOff Environment: development.,HIGH
+Dependency version warning detected during build Environment: testing.,MEDIUM
+SonarQube reported code quality warnings Workflow run number 9691.,MEDIUM
+Application deployment failed because connection was refused Job completed in 254 seconds.,HIGH
+Docker build failed because base image was not found Service: OrderService.,HIGH
+Maven build failed due to unresolved dependency Environment: testing.,HIGH
+Dependency version warning detected during build Environment: development.,MEDIUM
+Flaky test detected but retry passed successfully Job completed in 587 seconds.,MEDIUM
+Kubernetes deployment failed with ImagePullBackOff Test: OrderControllerTest.,HIGH
+Compilation failed because symbol could not be resolved Job completed in 538 seconds.,HIGH
+Application deployment failed because connection was refused Service: PaymentService.,HIGH
+Application deployed successfully and health check passed Workflow run number 3363.,LOW
+Code coverage below recommended threshold Job completed in 97 seconds.,MEDIUM
+Security scan found critical vulnerabilities Test: TaskServiceTest.,HIGH
+Maven build successful with no compilation errors,LOW
+Application deployed successfully and health check passed Service: GatewayService.,LOW
+Memory usage warning detected during compilation Dependency: Jackson.,MEDIUM
+Minor configuration warning detected during deployment Job completed in 569 seconds.,MEDIUM
+Docker image built successfully and pushed to registry Workflow run number 4232.,LOW
+Deprecated dependency detected in project Dependency: PostgreSQL.,MEDIUM
+Application deployed successfully and health check passed,LOW
+Dependency version warning detected during build Service: OrderService.,MEDIUM
+Code quality checks passed and coverage threshold achieved Test: LoginServiceTest.,LOW
+Docker image built successfully and pushed to registry Service: OrderService.,LOW
+Kubernetes deployment failed with ImagePullBackOff Dependency: Spring Boot.,HIGH
+Flaky test detected but retry passed successfully Job completed in 303 seconds.,MEDIUM
+Integration tests failed and pipeline was terminated Workflow run number 4259.,HIGH
+Network timeout occurred while downloading dependencies Workflow run number 9115.,MEDIUM
+Deployment timeout occurred but retry succeeded Dependency: Mockito.,MEDIUM
+Pipeline completed successfully with no errors Job completed in 589 seconds.,LOW
+Build completed successfully and all tests passed Workflow run number 3870.,LOW
+Docker image built successfully and pushed to registry Environment: testing.,LOW
+Maven build failed due to unresolved dependency Workflow run number 6603.,HIGH
+Container crashed with OutOfMemoryError Test: OrderControllerTest.,HIGH
+Unit test failed with assertion error and build stopped Job completed in 72 seconds.,HIGH
+Deployment timeout occurred but retry succeeded Workflow run number 6680.,MEDIUM
+Docker image size exceeded recommended limit Environment: production.,MEDIUM
+Security scan completed with no vulnerabilities Job completed in 139 seconds.,LOW
+Container crashed with OutOfMemoryError Dependency: JUnit.,HIGH
+SonarQube reported code quality warnings Workflow run number 8066.,MEDIUM
+Docker build failed because base image was not found,HIGH
+Maven build failed due to unresolved dependency Service: PaymentService.,HIGH
+Maven build successful with no compilation errors Workflow run number 7105.,LOW
+Deprecated dependency detected in project Test: OrderControllerTest.,MEDIUM
+Application deployment failed because connection was refused Service: OrderService.,HIGH
+SonarQube reported code quality warnings Test: LoginServiceTest.,MEDIUM
+Security scan completed with no vulnerabilities Environment: development.,LOW
+Docker image built successfully and pushed to registry Job completed in 463 seconds.,LOW
+Minor configuration warning detected during deployment,MEDIUM
+Deployment completed successfully to Kubernetes Job completed in 222 seconds.,LOW
+Kubernetes deployment failed with ImagePullBackOff Dependency: Mockito.,HIGH
+Minor configuration warning detected during deployment Test: LoginServiceTest.,MEDIUM
+Pipeline completed successfully with no errors Environment: development.,LOW
+Deprecated dependency detected in project,MEDIUM
+Compilation failed because symbol could not be resolved,HIGH
+Compilation failed because symbol could not be resolved Job completed in 65 seconds.,HIGH
+Docker build failed because base image was not found Environment: production.,HIGH
+Minor configuration warning detected during deployment,MEDIUM
+Code coverage below recommended threshold Service: OrderService.,MEDIUM
+Build completed successfully and all tests passed,LOW
+Deprecated dependency detected in project,MEDIUM
+Docker image built successfully and pushed to registry Workflow run number 3718.,LOW
+Network timeout occurred while downloading dependencies Service: GatewayService.,MEDIUM
+Code coverage below recommended threshold Workflow run number 5508.,MEDIUM
+Pipeline completed successfully with no errors,LOW
+Application deployed successfully and health check passed Dependency: Jackson.,LOW
+Application deployment failed because connection was refused Dependency: Docker.,HIGH
+Network timeout occurred while downloading dependencies Test: PaymentIntegrationTest.,MEDIUM
+Deployment completed successfully to Kubernetes Test: RepositoryTest.,LOW
+Maven build failed due to unresolved dependency Service: InventoryService.,HIGH
+Kubernetes deployment failed with ImagePullBackOff,HIGH
+Dependency version warning detected during build Environment: production.,MEDIUM
+Docker image built successfully and pushed to registry,LOW
+Deprecated dependency detected in project Test: PaymentIntegrationTest.,MEDIUM
+Security scan completed with no vulnerabilities Workflow run number 8025.,LOW
+Docker image size exceeded recommended limit Test: TaskServiceTest.,MEDIUM
+Deployment failed because service was unavailable,HIGH
+Security scan completed with no vulnerabilities Workflow run number 9008.,LOW
+Application deployed successfully and health check passed Job completed in 305 seconds.,LOW
+Code coverage below recommended threshold Test: OrderControllerTest.,MEDIUM
+All workflow stages completed successfully Workflow run number 4533.,LOW
+Compilation failed because symbol could not be resolved Dependency: Docker.,HIGH
+Kubernetes deployment failed with ImagePullBackOff Test: OrderControllerTest.,HIGH
+Memory usage warning detected during compilation Service: GatewayService.,MEDIUM
+Memory usage warning detected during compilation Job completed in 586 seconds.,MEDIUM
+SonarQube reported code quality warnings Test: LoginServiceTest.,MEDIUM
+Application deployed successfully and health check passed Service: AuthenticationService.,LOW
+Pipeline completed successfully with no errors,LOW
+Application deployment failed because connection was refused Dependency: Docker.,HIGH
+Flaky test detected but retry passed successfully Job completed in 279 seconds.,MEDIUM
+Container crashed with OutOfMemoryError Workflow run number 1953.,HIGH
+Docker image size exceeded recommended limit Environment: development.,MEDIUM
+Compilation failed because symbol could not be resolved Dependency: PostgreSQL.,HIGH
+Deployment timeout occurred but retry succeeded Test: OrderControllerTest.,MEDIUM
+Deployment timeout occurred but retry succeeded Job completed in 38 seconds.,MEDIUM
+Container crashed with OutOfMemoryError,HIGH
+Memory usage warning detected during compilation,MEDIUM
+Security scan completed with no vulnerabilities Test: LoginServiceTest.,LOW
+Maven build failed due to unresolved dependency Environment: staging.,HIGH
+Unit test failed with assertion error and build stopped Service: AuthenticationService.,HIGH
+All unit tests and integration tests passed Service: OrderService.,LOW
+Flaky test detected but retry passed successfully Workflow run number 6614.,MEDIUM
+Deployment failed because service was unavailable Job completed in 356 seconds.,HIGH
+Pipeline completed successfully with no errors Job completed in 54 seconds.,LOW
+Kubernetes deployment failed with ImagePullBackOff Environment: staging.,HIGH
+All unit tests and integration tests passed Environment: testing.,LOW
+Maven build failed due to unresolved dependency Environment: production.,HIGH
+Pipeline completed successfully with no errors Environment: testing.,LOW
+Network timeout occurred while downloading dependencies Job completed in 337 seconds.,MEDIUM
+All workflow stages completed successfully Dependency: PostgreSQL.,LOW
+Docker build failed because base image was not found Workflow run number 2194.,HIGH
+Docker image size exceeded recommended limit,MEDIUM
+Build completed successfully and all tests passed Job completed in 323 seconds.,LOW
+Application deployed successfully and health check passed Dependency: Docker.,LOW
+Deprecated dependency detected in project Environment: production.,MEDIUM
+Deployment timeout occurred but retry succeeded Dependency: Docker.,MEDIUM
+Code quality checks passed and coverage threshold achieved,LOW
+Dependency version warning detected during build Job completed in 56 seconds.,MEDIUM
+Security scan found critical vulnerabilities Dependency: Mockito.,HIGH
+Deployment failed because service was unavailable Test: TaskServiceTest.,HIGH
+SonarQube reported code quality warnings,MEDIUM
+Build completed successfully and all tests passed Workflow run number 2592.,LOW
+Kubernetes deployment failed with ImagePullBackOff Environment: development.,HIGH
+Maven build failed due to unresolved dependency Dependency: PostgreSQL.,HIGH
+Integration tests failed and pipeline was terminated Service: PaymentService.,HIGH
+Security scan completed with no vulnerabilities Service: InventoryService.,LOW
+Kubernetes deployment failed with ImagePullBackOff Workflow run number 3591.,HIGH
+Container crashed with OutOfMemoryError Test: RepositoryTest.,HIGH
+Security scan completed with no vulnerabilities Service: GatewayService.,LOW
+Deployment failed because service was unavailable Dependency: PostgreSQL.,HIGH
+Flaky test detected but retry passed successfully Job completed in 67 seconds.,MEDIUM
+Application deployment failed because connection was refused Dependency: Spring Boot.,HIGH
+All unit tests and integration tests passed,LOW
+Docker image built successfully and pushed to registry Test: LoginServiceTest.,LOW
+Deployment timeout occurred but retry succeeded,MEDIUM
+Pipeline completed successfully with no errors Dependency: Docker.,LOW
+Docker image size exceeded recommended limit Job completed in 228 seconds.,MEDIUM
+Code quality checks passed and coverage threshold achieved,LOW
+Container crashed with OutOfMemoryError Dependency: Jackson.,HIGH
+Docker build failed because base image was not found Environment: testing.,HIGH
+Maven build failed due to unresolved dependency,HIGH
+Deployment completed successfully to Kubernetes,LOW
+Unit test failed with assertion error and build stopped Job completed in 371 seconds.,HIGH
+Docker build failed because base image was not found Environment: production.,HIGH
+Security scan completed with no vulnerabilities Environment: staging.,LOW
+Security scan completed with no vulnerabilities Job completed in 18 seconds.,LOW
+Docker image built successfully and pushed to registry Job completed in 365 seconds.,LOW
+Compilation failed because symbol could not be resolved,HIGH
+Deprecated dependency detected in project Environment: development.,MEDIUM
+Security scan completed with no vulnerabilities Job completed in 55 seconds.,LOW
+Memory usage warning detected during compilation Dependency: Docker.,MEDIUM
+Memory usage warning detected during compilation Job completed in 285 seconds.,MEDIUM
+Deployment failed because service was unavailable Dependency: PostgreSQL.,HIGH
+Container crashed with OutOfMemoryError,HIGH
+Maven build successful with no compilation errors Service: InventoryService.,LOW
+Maven build successful with no compilation errors Environment: production.,LOW
+Maven build successful with no compilation errors Service: InventoryService.,LOW
+Docker image built successfully and pushed to registry Dependency: Jackson.,LOW
+Deployment timeout occurred but retry succeeded Test: UserServiceTest.,MEDIUM
+Integration tests failed and pipeline was terminated Service: InventoryService.,HIGH
+Deployment timeout occurred but retry succeeded Environment: staging.,MEDIUM
+Integration tests failed and pipeline was terminated Environment: development.,HIGH
+Docker image built successfully and pushed to registry Environment: development.,LOW
+All unit tests and integration tests passed Dependency: Mockito.,LOW
+Maven build successful with no compilation errors Service: OrderService.,LOW
+Kubernetes deployment failed with ImagePullBackOff Environment: testing.,HIGH
+Container crashed with OutOfMemoryError Environment: staging.,HIGH
+Kubernetes deployment failed with ImagePullBackOff Environment: testing.,HIGH
+Dependency version warning detected during build Dependency: Docker.,MEDIUM
+Deployment completed successfully to Kubernetes Job completed in 354 seconds.,LOW
+Code quality checks passed and coverage threshold achieved Environment: testing.,LOW
+Security scan completed with no vulnerabilities Dependency: Jackson.,LOW
+Build completed successfully and all tests passed,LOW
+All unit tests and integration tests passed Job completed in 277 seconds.,LOW
+Build completed successfully and all tests passed Dependency: Kubernetes client.,LOW
+Integration tests failed and pipeline was terminated Workflow run number 2204.,HIGH
+All unit tests and integration tests passed Test: PaymentIntegrationTest.,LOW
+Security scan found critical vulnerabilities Service: PaymentService.,HIGH
+Maven build failed due to unresolved dependency Job completed in 335 seconds.,HIGH
+Security scan completed with no vulnerabilities Service: UserService.,LOW
+Deployment completed successfully to Kubernetes Workflow run number 8873.,LOW
+Pipeline completed successfully with no errors Workflow run number 4750.,LOW
+Security scan found critical vulnerabilities Job completed in 542 seconds.,HIGH
+Application deployment failed because connection was refused,HIGH
+Code quality checks passed and coverage threshold achieved Job completed in 109 seconds.,LOW
+All unit tests and integration tests passed Workflow run number 7643.,LOW
+Unit test failed with assertion error and build stopped Service: UserService.,HIGH
+Security scan completed with no vulnerabilities,LOW
+Deprecated dependency detected in project Environment: production.,MEDIUM
+Container crashed with OutOfMemoryError Workflow run number 4212.,HIGH
+Flaky test detected but retry passed successfully Test: RepositoryTest.,MEDIUM
+Deployment timeout occurred but retry succeeded Workflow run number 8020.,MEDIUM
+Deprecated dependency detected in project Workflow run number 5179.,MEDIUM
+Docker build failed because base image was not found,HIGH
+Pipeline completed successfully with no errors Service: AuthenticationService.,LOW
+Security scan found critical vulnerabilities Job completed in 252 seconds.,HIGH
+Integration tests failed and pipeline was terminated,HIGH
+Security scan completed with no vulnerabilities,LOW
+Docker image size exceeded recommended limit Environment: testing.,MEDIUM
+Dependency version warning detected during build Test: UserServiceTest.,MEDIUM
+Unit test failed with assertion error and build stopped Job completed in 137 seconds.,HIGH
+All workflow stages completed successfully,LOW
+Application deployment failed because connection was refused Test: RepositoryTest.,HIGH
+All workflow stages completed successfully Test: UserServiceTest.,LOW
+Docker build failed because base image was not found Environment: production.,HIGH
+Memory usage warning detected during compilation,MEDIUM
+SonarQube reported code quality warnings Dependency: Docker.,MEDIUM
+All unit tests and integration tests passed,LOW
+Kubernetes deployment failed with ImagePullBackOff,HIGH
+Deployment failed because service was unavailable,HIGH
+Container crashed with OutOfMemoryError Test: TaskServiceTest.,HIGH
+Deployment timeout occurred but retry succeeded Test: PaymentIntegrationTest.,MEDIUM
+Integration tests failed and pipeline was terminated Environment: testing.,HIGH
+Memory usage warning detected during compilation,MEDIUM
+Integration tests failed and pipeline was terminated Workflow run number 2162.,HIGH
+Minor configuration warning detected during deployment Job completed in 584 seconds.,MEDIUM
+Unit test failed with assertion error and build stopped Dependency: Mockito.,HIGH
+Integration tests failed and pipeline was terminated Environment: testing.,HIGH
+Dependency version warning detected during build Test: PaymentIntegrationTest.,MEDIUM
+Code coverage below recommended threshold,MEDIUM
+Application deployment failed because connection was refused Workflow run number 8898.,HIGH
+Unit test failed with assertion error and build stopped Dependency: JUnit.,HIGH
+All unit tests and integration tests passed Environment: staging.,LOW
+Kubernetes deployment failed with ImagePullBackOff Service: OrderService.,HIGH
+All unit tests and integration tests passed,LOW
+Minor configuration warning detected during deployment,MEDIUM
+Security scan completed with no vulnerabilities Job completed in 312 seconds.,LOW
+All workflow stages completed successfully Test: RepositoryTest.,LOW
+Deployment completed successfully to Kubernetes Environment: testing.,LOW
+Unit test failed with assertion error and build stopped,HIGH
+Minor configuration warning detected during deployment Environment: production.,MEDIUM
+Deprecated dependency detected in project,MEDIUM
+SonarQube reported code quality warnings Job completed in 181 seconds.,MEDIUM
+Maven build failed due to unresolved dependency Test: LoginServiceTest.,HIGH
+Deployment timeout occurred but retry succeeded,MEDIUM
+All workflow stages completed successfully Workflow run number 5902.,LOW
+Memory usage warning detected during compilation Job completed in 136 seconds.,MEDIUM
+Code quality checks passed and coverage threshold achieved,LOW
+Code quality checks passed and coverage threshold achieved Job completed in 279 seconds.,LOW
+Docker image built successfully and pushed to registry Dependency: Mockito.,LOW
+Container crashed with OutOfMemoryError Workflow run number 1306.,HIGH
+Flaky test detected but retry passed successfully Workflow run number 8109.,MEDIUM
+Docker image size exceeded recommended limit,MEDIUM
+Memory usage warning detected during compilation Test: TaskServiceTest.,MEDIUM
+All unit tests and integration tests passed Service: PaymentService.,LOW
+Dependency version warning detected during build Environment: staging.,MEDIUM
+Integration tests failed and pipeline was terminated Job completed in 599 seconds.,HIGH
+Kubernetes deployment failed with ImagePullBackOff Service: GatewayService.,HIGH
+Application deployment failed because connection was refused,HIGH
+Code quality checks passed and coverage threshold achieved,LOW
+All unit tests and integration tests passed Workflow run number 8444.,LOW
+Docker build failed because base image was not found Job completed in 546 seconds.,HIGH
+Application deployment failed because connection was refused Workflow run number 5254.,HIGH
+Maven build failed due to unresolved dependency Service: AuthenticationService.,HIGH
+Docker build failed because base image was not found Test: RepositoryTest.,HIGH
+All workflow stages completed successfully Dependency: Kubernetes client.,LOW
+Deployment failed because service was unavailable Workflow run number 2827.,HIGH
+Security scan completed with no vulnerabilities Test: OrderControllerTest.,LOW
+Network timeout occurred while downloading dependencies Job completed in 241 seconds.,MEDIUM
+All workflow stages completed successfully Test: PaymentIntegrationTest.,LOW
+Container crashed with OutOfMemoryError Environment: testing.,HIGH
+Deprecated dependency detected in project,MEDIUM
+Code quality checks passed and coverage threshold achieved Service: OrderService.,LOW
+Deployment failed because service was unavailable Test: RepositoryTest.,HIGH
+Maven build successful with no compilation errors Environment: staging.,LOW
+Flaky test detected but retry passed successfully Test: LoginServiceTest.,MEDIUM
+Application deployment failed because connection was refused Environment: staging.,HIGH
+Code quality checks passed and coverage threshold achieved Job completed in 555 seconds.,LOW
+Docker image size exceeded recommended limit Job completed in 426 seconds.,MEDIUM
+Application deployed successfully and health check passed Test: LoginServiceTest.,LOW
+Maven build failed due to unresolved dependency Dependency: Docker.,HIGH
+Deployment timeout occurred but retry succeeded Environment: testing.,MEDIUM
+Deployment timeout occurred but retry succeeded Dependency: JUnit.,MEDIUM
+Code quality checks passed and coverage threshold achieved Service: PaymentService.,LOW
+Docker image built successfully and pushed to registry Environment: staging.,LOW
+All unit tests and integration tests passed Service: OrderService.,LOW
+Deployment timeout occurred but retry succeeded Test: LoginServiceTest.,MEDIUM
+Security scan found critical vulnerabilities Service: NotificationService.,HIGH
+Code coverage below recommended threshold Job completed in 395 seconds.,MEDIUM
+Memory usage warning detected during compilation Job completed in 541 seconds.,MEDIUM
+Minor configuration warning detected during deployment Environment: testing.,MEDIUM
+Docker image built successfully and pushed to registry Service: InventoryService.,LOW
+Application deployed successfully and health check passed,LOW
+Pipeline completed successfully with no errors Job completed in 111 seconds.,LOW
+Docker image size exceeded recommended limit Job completed in 522 seconds.,MEDIUM
+Application deployed successfully and health check passed Job completed in 405 seconds.,LOW
+Kubernetes deployment failed with ImagePullBackOff Job completed in 470 seconds.,HIGH
+Maven build failed due to unresolved dependency Test: TaskServiceTest.,HIGH
+Deployment timeout occurred but retry succeeded Dependency: Mockito.,MEDIUM
+Code quality checks passed and coverage threshold achieved Job completed in 146 seconds.,LOW
+Build completed successfully and all tests passed Service: AuthenticationService.,LOW
+Maven build successful with no compilation errors Workflow run number 6139.,LOW
+Flaky test detected but retry passed successfully,MEDIUM
+Docker image built successfully and pushed to registry Service: InventoryService.,LOW
+Maven build successful with no compilation errors,LOW
+Kubernetes deployment failed with ImagePullBackOff Service: PaymentService.,HIGH
+Build completed successfully and all tests passed Service: GatewayService.,LOW
+Deprecated dependency detected in project Service: PaymentService.,MEDIUM
+Security scan found critical vulnerabilities Workflow run number 3627.,HIGH
+Flaky test detected but retry passed successfully,MEDIUM

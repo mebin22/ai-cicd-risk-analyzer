@@ -40,6 +40,10 @@
             border-left: 5px solid #3f51b5;
         }
 
+        .history-card {
+            border-left: 5px solid #009688;
+        }
+
         .chart-box {
             background: white;
             padding: 20px;
@@ -146,6 +150,32 @@
 
 <p id="metricsError" class="error-message"></p>
 
+<h2>Workflow History Analytics</h2>
+
+<div class="cards">
+    <div class="card history-card">
+        <h3>Successful Workflows</h3>
+        <p id="successfulWorkflows">0</p>
+    </div>
+
+    <div class="card history-card">
+        <h3>Failed Workflows</h3>
+        <p id="failedWorkflows">0</p>
+    </div>
+
+    <div class="card history-card">
+        <h3>Average Confidence</h3>
+        <p id="averageConfidence">0%</p>
+    </div>
+
+    <div class="card history-card">
+        <h3>Average Risk Score</h3>
+        <p id="averageHistoryRiskScore">0</p>
+    </div>
+</div>
+
+<p id="historyError" class="error-message"></p>
+
 <div class="chart-box">
     <h2>Risk Distribution</h2>
     <canvas id="riskChart" width="400" height="150"></canvas>
@@ -182,7 +212,7 @@
             return 'N/A';
         }
 
-        return `${(value * 100).toFixed(2)}%`;
+        return `${(Number(value) * 100).toFixed(2)}%`;
     }
 
     async function loadStats() {
@@ -222,7 +252,9 @@
             const res = await fetch('/api/ml/metrics');
 
             if (!res.ok) {
-                throw new Error(`Metrics request failed: ${res.status}`);
+                throw new Error(
+                    `Metrics request failed: ${res.status}`
+                );
             }
 
             const data = await res.json();
@@ -243,8 +275,56 @@
 
         } catch (error) {
             console.error('Unable to load ML metrics:', error);
+
             errorElement.innerText =
                 'Unable to load machine learning evaluation metrics.';
+        }
+    }
+
+    async function loadHistorySummary() {
+        const errorElement =
+            document.getElementById('historyError');
+
+        try {
+            const res =
+                await fetch('/api/risk/history-summary');
+
+            if (!res.ok) {
+                throw new Error(
+                    `History summary request failed: ${res.status}`
+                );
+            }
+
+            const data = await res.json();
+
+            document.getElementById(
+                'successfulWorkflows'
+            ).innerText = data.successful ?? 0;
+
+            document.getElementById(
+                'failedWorkflows'
+            ).innerText = data.failed ?? 0;
+
+            document.getElementById(
+                'averageConfidence'
+            ).innerText =
+                toPercentage(data.averageConfidence ?? 0);
+
+            document.getElementById(
+                'averageHistoryRiskScore'
+            ).innerText =
+                Number(data.averageRiskScore ?? 0).toFixed(2);
+
+            errorElement.innerText = '';
+
+        } catch (error) {
+            console.error(
+                'Unable to load workflow history analytics:',
+                error
+            );
+
+            errorElement.innerText =
+                'Unable to load workflow history analytics.';
         }
     }
 
@@ -259,7 +339,8 @@
             }
 
             const data = await res.json();
-            const table = document.getElementById('recentTable');
+            const table =
+                document.getElementById('recentTable');
 
             table.innerHTML = '';
 
@@ -270,22 +351,42 @@
                         ? 'N/A'
                         : toPercentage(item.confidence);
 
+                const riskLevel =
+                    item.riskLevel ?? 'UNKNOWN';
+
+                const riskScore =
+                    item.riskScore ?? 'N/A';
+
+                const deploymentDecision =
+                    item.deploymentDecision ?? 'N/A';
+
+                const recommendation =
+                    item.recommendation ?? 'N/A';
+
                 table.innerHTML += `
                     <tr>
-                        <td>${item.id}</td>
-                        <td class="${item.riskLevel}">
-                            ${item.riskLevel}
+                        <td>${item.id ?? 'N/A'}</td>
+
+                        <td class="${riskLevel}">
+                            ${riskLevel}
                         </td>
-                        <td>${item.riskScore}</td>
+
+                        <td>${riskScore}</td>
+
                         <td>${confidence}</td>
-                        <td>${item.deploymentDecision}</td>
-                        <td>${item.recommendation}</td>
+
+                        <td>${deploymentDecision}</td>
+
+                        <td>${recommendation}</td>
                     </tr>
                 `;
             });
 
         } catch (error) {
-            console.error('Unable to load recent analyses:', error);
+            console.error(
+                'Unable to load recent analyses:',
+                error
+            );
         }
     }
 
@@ -294,11 +395,14 @@
             const res = await fetch('/api/risk/trend');
 
             if (!res.ok) {
-                throw new Error(`Trend request failed: ${res.status}`);
+                throw new Error(
+                    `Trend request failed: ${res.status}`
+                );
             }
 
             const data = await res.json();
-            const ctx = document.getElementById('riskChart');
+            const ctx =
+                document.getElementById('riskChart');
 
             if (riskChart) {
                 riskChart.destroy();
@@ -306,10 +410,17 @@
 
             riskChart = new Chart(ctx, {
                 type: 'bar',
+
                 data: {
-                    labels: ['High', 'Medium', 'Low'],
+                    labels: [
+                        'High',
+                        'Medium',
+                        'Low'
+                    ],
+
                     datasets: [{
                         label: 'Risk Count',
+
                         data: [
                             data.highRisk ?? 0,
                             data.mediumRisk ?? 0,
@@ -317,13 +428,28 @@
                         ]
                     }]
                 },
+
                 options: {
                     responsive: true,
+
                     scales: {
                         y: {
                             beginAtZero: true,
+
                             ticks: {
                                 precision: 0
+                            },
+
+                            title: {
+                                display: true,
+                                text: 'Number of Analyses'
+                            }
+                        },
+
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Risk Level'
                             }
                         }
                     }
@@ -331,7 +457,10 @@
             });
 
         } catch (error) {
-            console.error('Unable to load risk trend:', error);
+            console.error(
+                'Unable to load risk trend:',
+                error
+            );
         }
     }
 
@@ -359,11 +488,17 @@
             );
 
             const values = orderedData.map(item =>
-                Number((item.confidence * 100).toFixed(2))
+                Number(
+                    (
+                        Number(item.confidence) * 100
+                    ).toFixed(2)
+                )
             );
 
             const ctx =
-                document.getElementById('confidenceChart');
+                document.getElementById(
+                    'confidenceChart'
+                );
 
             if (confidenceChart) {
                 confidenceChart.destroy();
@@ -371,27 +506,36 @@
 
             confidenceChart = new Chart(ctx, {
                 type: 'line',
+
                 data: {
                     labels: labels,
+
                     datasets: [{
-                        label: 'Prediction Confidence (%)',
+                        label:
+                            'Prediction Confidence (%)',
+
                         data: values,
+
                         fill: false,
                         tension: 0.3,
                         spanGaps: true
                     }]
                 },
+
                 options: {
                     responsive: true,
+
                     scales: {
                         y: {
                             beginAtZero: true,
                             max: 100,
+
                             title: {
                                 display: true,
                                 text: 'Confidence (%)'
                             }
                         },
+
                         x: {
                             title: {
                                 display: true,
@@ -414,6 +558,7 @@
         await Promise.all([
             loadStats(),
             loadMetrics(),
+            loadHistorySummary(),
             loadRecent(),
             loadTrend(),
             loadConfidenceTrend()

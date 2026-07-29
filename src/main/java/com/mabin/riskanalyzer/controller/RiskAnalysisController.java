@@ -8,7 +8,6 @@ import com.mabin.riskanalyzer.service.MlRiskService;
 import com.mabin.riskanalyzer.service.RiskAnalysisService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.PageRequest;
-
 import java.util.List;
 
 @RestController
@@ -103,5 +102,10 @@ public class RiskAnalysisController {
         trend.setLowRisk(riskAnalysisRepository.countByRiskLevel("LOW"));
 
         return trend;
+    }
+
+    @GetMapping("/history-summary")
+    public HistorySummaryDTO getHistorySummary() {
+        return riskAnalysisService.getHistorySummary();
     }
 }

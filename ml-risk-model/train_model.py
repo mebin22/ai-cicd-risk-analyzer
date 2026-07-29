@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 
 # Load dataset
-data = pd.read_csv("training_data.csv")
+data = pd.read_csv("training_dataset.csv")
 
 # Split input logs and labels
 X = data["logs"]
@@ -26,7 +26,11 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 # Build ML pipeline
 model = Pipeline([
-    ("tfidf", TfidfVectorizer()),
+    ("tfidf", TfidfVectorizer(
+        stop_words="english",
+        ngram_range=(1, 2),
+        min_df=2
+    )),
     ("classifier", LogisticRegression(max_iter=1000))
 ])
 
