@@ -19,12 +19,11 @@ jobs:
           distribution: temurin
           java-version: "21"
 
-      - name: Optional Quality Check
-        continue-on-error: true
+      - name: Critical Build Failure
         run: |
-          echo "Warning: code coverage is below threshold"
-          echo "Warning: manual review is required"
-          echo "Non-critical quality check failed"
+          echo "Unit tests failed"
+          echo "Docker build failed"
+          echo "Deployment failed"
           exit 1
 
       - name: Build Project
