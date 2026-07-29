@@ -1,3 +1,9 @@
+name: Java CI Build
+
+on:
+  push:
+    branches: [ main ]
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -5,9 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Demo high-risk failure
-        run: |
-          echo "Unit test failed"
-          echo "Docker build error"
-          echo "Deployment failed"
-          exit 1
+      - name: Setup Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Build Project
+        run: mvn clean install
