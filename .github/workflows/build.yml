@@ -19,12 +19,5 @@ jobs:
           distribution: temurin
           java-version: "21"
 
-      - name: Critical Build Failure
-        run: |
-          echo "Unit tests failed"
-          echo "Docker build failed"
-          echo "Deployment failed"
-          exit 1
-
       - name: Build Project
         run: mvn clean package
