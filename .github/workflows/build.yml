@@ -21,9 +21,3 @@ jobs:
 
       - name: Build Project
         run: mvn clean package
-
-      - name: Run Unit Tests
-        run: |
-          echo "Running tests...."
-          echo "Tests failed"
-          exit 1
