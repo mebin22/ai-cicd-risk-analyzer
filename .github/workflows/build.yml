@@ -2,28 +2,20 @@ name: Java CI Build
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Java 21
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: "21"
+          java-version: 21
 
       - name: Build Project
-        run: mvn clean package
-
-      - name: Run Unit Tests
-        run: |
-          echo "Running tests..."
-          echo "Tests failed"
-          exit 1
+        run: mvn clean install
