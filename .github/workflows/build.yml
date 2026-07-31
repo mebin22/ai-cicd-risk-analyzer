@@ -24,13 +24,6 @@ jobs:
 
       - name: Run Unit Tests
         run: |
-          echo "Running unit tests..."
-          echo "All tests passed."
-
-      - name: Code coverage below threshold manual review required
-        run: |
-          echo "Code coverage is 68%"
-          echo "Manual review required"
-
-      - name: Complete Build
-        run: echo "Build completed successfully."
+          echo "Running tests...."
+          echo "Tests failed"
+          exit 1
