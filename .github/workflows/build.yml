@@ -22,8 +22,8 @@ jobs:
       - name: Build Project
         run: mvn clean package -DskipTests
 
-      - name: Compile Project
+      - name: Build Docker Image
         run: |
-          echo "Compilation failure"
-          echo "cannot find symbol UserService"
+          echo "Docker build failed"
+          echo "failed to solve: failed to read Dockerfile"
           exit 1
