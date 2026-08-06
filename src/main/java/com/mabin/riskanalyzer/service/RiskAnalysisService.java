@@ -172,9 +172,7 @@ public class RiskAnalysisService {
         );
 
         analysis.setFailureCause(
-                githubRunId == null
-                        ? "ML-based prediction"
-                        : "GitHub Actions ML prediction"
+                mlResponse.getFailureCause()
         );
 
         analysis.setRecommendation(

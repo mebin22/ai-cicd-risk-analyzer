@@ -14,4 +14,5 @@ public class GitHubAnalysisResponseDTO {
     private Double confidence;
     private String deploymentDecision;
     private String recommendation;
+    private String failureCause;
 }

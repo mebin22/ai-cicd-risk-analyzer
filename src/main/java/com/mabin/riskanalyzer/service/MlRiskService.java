@@ -5,15 +5,23 @@ import com.mabin.riskanalyzer.dto.ModelMetricsDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
+import java.util.Locale;
 import java.util.Map;
 
 @Service
 public class MlRiskService {
 
+    private static final double MINIMUM_CONFIDENCE = 0.50;
+
     private final RestClient restClient = RestClient.create();
 
     public MlRiskResponseDTO predictRisk(String logs) {
-        Map<String, String> requestBody = Map.of("logs", logs);
+
+        String safeLogs = logs == null ? "" : logs.trim();
+
+        Map<String, String> requestBody = Map.of(
+                "logs", safeLogs
+        );
 
         MlRiskResponseDTO response = restClient.post()
                 .uri("http://ml-service:5001/predict-risk")
@@ -22,52 +30,82 @@ public class MlRiskService {
                 .retrieve()
                 .body(MlRiskResponseDTO.class);
 
-        if (response != null) {
-            response.setRecommendation(generateRecommendation(logs));
+        if (response == null) {
+            throw new IllegalStateException(
+                    "ML service returned an empty response."
+            );
         }
+
+        applyWorkflowValidation(safeLogs, response);
 
         return response;
     }
 
-    private String generateRecommendation(String logs) {
-        String log = logs.toLowerCase();
+    private void applyWorkflowValidation(
+            String logs,
+            MlRiskResponseDTO response) {
 
-        // Check test failures first
-        if (log.contains("unit test")
-                || log.contains("test failed")
-                || log.contains("failures: 1")) {
-            return "Review failing test cases and fix code defects before deployment.";
+        String normalizedLogs = logs.toLowerCase(Locale.ROOT);
+
+        boolean containsFailure =
+                normalizedLogs.contains("failed")
+                        || normalizedLogs.contains("failure")
+                        || normalizedLogs.contains("error")
+                        || normalizedLogs.contains("exception")
+                        || normalizedLogs.contains("cancelled")
+                        || normalizedLogs.contains("timed out")
+                        || normalizedLogs.contains("timeout")
+                        || normalizedLogs.contains("connection refused");
+
+        boolean containsSuccess =
+                normalizedLogs.contains("conclusion: success")
+                        || normalizedLogs.contains("conclusion=success")
+                        || normalizedLogs.contains("\"conclusion\":\"success\"")
+                        || normalizedLogs.contains("workflow completed successfully")
+                        || normalizedLogs.contains("all jobs passed")
+                        || normalizedLogs.contains("build succeeded");
+
+        double confidence = response.getConfidence();
+
+        /*
+         * A successful workflow with no failure indicators should not be
+         * classified as HIGH because of a low-confidence ML prediction.
+         */
+        if (containsSuccess && !containsFailure) {
+
+            response.setRiskLevel("LOW");
+            response.setRiskScore(20);
+            response.setDeploymentDecision("PROCEED");
+            response.setFailureCause(
+                    "GitHub Actions workflow completed successfully"
+            );
+            response.setRecommendation(
+                    "Deployment can proceed."
+            );
+
+            return;
         }
 
-        // Check dependency issues before docker
-        if (log.contains("dependency")) {
-            return "Resolve dependency version conflicts and rebuild the project.";
-        }
+        /*
+         * When the model is uncertain, require manual review instead of
+         * returning HIGH or LOW with weak confidence.
+         */
+        if (confidence < MINIMUM_CONFIDENCE) {
 
-        // Only trigger Docker recommendation for actual Docker failures
-        if (log.contains("docker")
-                && (log.contains("failed")
-                || log.contains("error")
-                || log.contains("build failure"))) {
-            return "Check Dockerfile configuration and dependency installation steps.";
+            response.setRiskLevel("MEDIUM");
+            response.setRiskScore(55);
+            response.setDeploymentDecision("REVIEW");
+            response.setFailureCause(
+                    "ML prediction confidence is below the required threshold"
+            );
+            response.setRecommendation(
+                    "Review the GitHub Actions logs manually before deployment."
+            );
         }
-
-        if (log.contains("deployment failed")) {
-            return "Check deployment configuration and service availability.";
-        }
-
-        if (log.contains("connection refused")) {
-            return "Verify network connectivity and target service status.";
-        }
-
-        if (log.contains("success") || log.contains("passed")) {
-            return "Deployment can proceed.";
-        }
-
-        return "Review CI/CD logs and resolve identified issues before deployment.";
     }
 
     public ModelMetricsDTO getMetrics() {
+
         return restClient.get()
                 .uri("http://ml-service:5001/metrics")
                 .retrieve()

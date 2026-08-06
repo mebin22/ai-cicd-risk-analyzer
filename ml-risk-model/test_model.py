@@ -1,25 +1,38 @@
 import joblib
 
+# Load trained model
 model = joblib.load("risk_model.pkl")
 
-test_logs = [
-    "Build completed and the application was deployed without errors",
-    "JUnit test failed because expected status 200 but received 500",
-    "Docker image build stopped due to an unavailable base image",
-    "Dependency download timed out but succeeded after retry",
-    "Kubernetes pod entered CrashLoopBackOff after deployment",
-]
+# Test workflow log
+test_log = """
+Workflow: Java CI Build
+Status: completed
+Conclusion: success
 
-predictions = model.predict(test_logs)
-probabilities = model.predict_proba(test_logs)
+Job: build
+Job conclusion: success
 
-for log, prediction, probability in zip(
-        test_logs,
-        predictions,
-        probabilities
-):
-    confidence = probability.max()
+Steps:
+- Build Project: success
+- Run Unit Tests: success
+- Code coverage check: success
+- Complete Build: success
 
-    print("\nLog:", log)
-    print("Predicted risk:", prediction)
-    print("Confidence:", round(float(confidence), 4))
+Warnings:
+- Code coverage below threshold
+- Current coverage: 68%
+- Required coverage: 80%
+- Manual review required
+
+Workflow result: completed successfully with non-critical warnings
+Deployment recommendation: manual review required
+"""
+
+# Predict
+prediction = model.predict([test_log])[0]
+probabilities = model.predict_proba([test_log])[0]
+
+print("Prediction:", prediction)
+print("Classes:", model.classes_)
+print("Probabilities:", probabilities)
+print("Confidence:", round(float(max(probabilities)), 4))

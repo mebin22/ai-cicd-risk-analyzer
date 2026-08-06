@@ -29,10 +29,19 @@ def predict_risk():
             "error": "The 'logs' field is required and cannot be empty."
         }), 400
 
+    print("\n===== LOG RECEIVED BY ML SERVICE =====", flush=True)
+    print(logs, flush=True)
+    print("======================================", flush=True)
+
     prediction = str(model.predict([logs])[0])
 
     probabilities = model.predict_proba([logs])[0]
     confidence = float(max(probabilities))
+
+    print("Prediction:", prediction, flush=True)
+    print("Classes:", model.classes_, flush=True)
+    print("Probabilities:", probabilities, flush=True)
+    print("Confidence:", confidence, flush=True)
 
     if prediction == "LOW":
         score = 20
@@ -92,5 +101,6 @@ if __name__ == "__main__":
     app.run(
         host="0.0.0.0",
         port=5001,
-        debug=True
+        debug=True,
+        use_reloader=False
     )
