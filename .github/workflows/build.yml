@@ -22,8 +22,8 @@ jobs:
       - name: Build Project
         run: mvn clean package -DskipTests
 
-      - name: Build Docker Image
+      - name: Connect Database
         run: |
-          echo "Docker build failed"
-          echo "failed to solve: failed to read Dockerfile"
+          echo "Connection refused"
+          echo "PostgreSQL server is not accepting connections"
           exit 1
