@@ -1,39 +1,127 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>CI/CD Risk Dashboard</title>
+    <meta charset="UTF-8">
+
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI-Assisted CI/CD Risk Dashboard</title>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 30px;
-            background: #f4f6f8;
+        * {
+            box-sizing: border-box;
         }
 
-        h1 {
-            color: #222;
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f4f6f8;
+            color: #1f2937;
+            font-family: Arial, sans-serif;
+        }
+
+        .page-container {
+            width: min(1450px, 96%);
+            margin: 0 auto;
+            padding: 16px 0 28px;
+        }
+
+        .dashboard-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .dashboard-title h1 {
+            margin: 0 0 8px;
+            color: #111827;
+        }
+
+        .dashboard-title p {
+            margin: 0;
+            color: #6b7280;
+        }
+
+        .refresh-button {
+            border: none;
+            border-radius: 8px;
+            padding: 12px 20px;
+            background: #2563eb;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .refresh-button:hover {
+            background: #1d4ed8;
+        }
+
+        .refresh-button:disabled {
+            cursor: not-allowed;
+            opacity: 0.65;
+        }
+
+        h2 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #1f2937;
+            font-size: 20px;
         }
 
         .cards {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(165px, 1fr));
+            gap: 12px;
+            margin-bottom: 16px;
         }
 
         .card {
             background: white;
-            padding: 20px;
-            border-radius: 8px;
-            width: 180px;
-            box-shadow: 0 2px 8px #ccc;
+            padding: 12px 14px;
+            border-radius: 9px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: 6px;
+            color: #4b5563;
+            font-size: 13px;
         }
 
         .card p {
-            font-size: 24px;
+            margin: 0;
+            font-size: 21px;
             font-weight: bold;
-            margin-bottom: 0;
+            color: #111827;
+        }
+
+        .total-card {
+            border-left: 5px solid #2563eb;
+        }
+
+        .high-card {
+            border-left: 5px solid #dc2626;
+        }
+
+        .medium-card {
+            border-left: 5px solid #f59e0b;
+        }
+
+        .low-card {
+            border-left: 5px solid #16a34a;
+        }
+
+        .average-card {
+            border-left: 5px solid #7c3aed;
         }
 
         .metrics-card {
@@ -44,186 +132,646 @@
             border-left: 5px solid #009688;
         }
 
+        .latest-analysis {
+            background: white;
+            border-radius: 10px;
+            padding: 14px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid #2563eb;
+        }
+
+        .latest-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(170px, 1fr));
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .latest-item {
+            padding: 10px;
+            background: #f8fafc;
+            border-radius: 7px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .latest-item .label {
+            display: block;
+            margin-bottom: 5px;
+            color: #6b7280;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .latest-item .value {
+            color: #111827;
+            font-size: 14px;
+            font-weight: bold;
+            overflow-wrap: anywhere;
+        }
+
+        .latest-details {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .detail-box {
+            padding: 11px 12px;
+            border-radius: 7px;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+        }
+
+        .detail-box h3 {
+            margin: 0 0 10px;
+            font-size: 16px;
+            color: #374151;
+        }
+
+        .detail-box p {
+            margin: 0;
+            color: #1f2937;
+            line-height: 1.4;
+            font-size: 13px;
+            overflow-wrap: anywhere;
+        }
+
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 6px;
+        }
+
         .chart-box {
             background: white;
-            padding: 20px;
+            padding: 12px;
+            border-radius: 9px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+            height: 235px;
+            overflow: hidden;
+        }
+
+        .chart-box h2 {
+            margin: 0 0 6px;
+            font-size: 16px;
+        }
+
+        .canvas-container {
+            position: relative;
+            width: 100%;
+            height: 185px;
+        }
+
+        .table-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .search-input {
+            width: min(420px, 100%);
+            padding: 11px 14px;
+            border: 1px solid #cbd5e1;
             border-radius: 8px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 8px #ccc;
+            font-size: 15px;
+        }
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
         }
 
         table {
             width: 100%;
-            background: white;
+            min-width: 1250px;
             border-collapse: collapse;
         }
 
         th,
         td {
-            padding: 12px;
-            border-bottom: 1px solid #ddd;
+            padding: 8px 9px;
+            border-bottom: 1px solid #e5e7eb;
             text-align: left;
+            vertical-align: top;
+            font-size: 12px;
         }
 
         th {
             background: #eef1f5;
+            color: #374151;
+            white-space: nowrap;
         }
 
-        .HIGH {
-            color: red;
+        tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        .risk-badge,
+        .decision-badge {
+            display: inline-block;
+            min-width: 85px;
+            padding: 6px 10px;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 12px;
             font-weight: bold;
         }
 
-        .MEDIUM {
-            color: orange;
-            font-weight: bold;
+        .risk-HIGH {
+            background: #fee2e2;
+            color: #b91c1c;
         }
 
-        .LOW {
-            color: green;
-            font-weight: bold;
+        .risk-MEDIUM {
+            background: #fef3c7;
+            color: #b45309;
+        }
+
+        .risk-LOW {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .risk-UNKNOWN {
+            background: #e5e7eb;
+            color: #4b5563;
+        }
+
+        .decision-STOP {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .decision-REVIEW {
+            background: #fef3c7;
+            color: #b45309;
+        }
+
+        .decision-PROCEED {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .decision-UNKNOWN {
+            background: #e5e7eb;
+            color: #4b5563;
         }
 
         .error-message {
-            color: red;
+            color: #b91c1c;
             font-weight: bold;
+        }
+
+        .loading-message {
+            color: #6b7280;
+            font-style: italic;
+        }
+
+        .empty-message {
+            padding: 25px;
+            text-align: center;
+            color: #6b7280;
+        }
+
+        @media (max-width: 700px) {
+            .dashboard-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .refresh-button {
+                width: 100%;
+            }
+
+            .chart-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .latest-details {
+                grid-template-columns: 1fr;
+            }
+
+            .chart-box {
+                height: 225px;
+            }
+
+            .canvas-container {
+                height: 175px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<h1>AI-Assisted CI/CD Risk Dashboard</h1>
+<div class="page-container">
 
-<h2>Risk Statistics</h2>
+    <header class="dashboard-header">
+        <div class="dashboard-title">
+            <h1>AI-Assisted CI/CD Risk Dashboard</h1>
 
-<div class="cards">
-    <div class="card">
-        <h3>Total</h3>
-        <p id="total">0</p>
+            <p>
+                Machine learning risk prediction, deterministic
+                issue detection and AI-generated recommendations
+            </p>
+        </div>
+
+        <button
+                id="refreshButton"
+                class="refresh-button"
+                type="button"
+                onclick="refreshDashboard()"
+        >
+            Refresh Dashboard
+        </button>
+    </header>
+
+    <h2>Latest Pipeline Analysis</h2>
+
+    <section class="latest-analysis">
+        <p
+                id="latestLoading"
+                class="loading-message"
+        >
+            Loading latest analysis...
+        </p>
+
+        <div
+                id="latestContent"
+                style="display: none;"
+        >
+            <div class="latest-grid">
+
+                <div class="latest-item">
+                    <span class="label">Analysis ID</span>
+                    <span
+                            id="latestId"
+                            class="value"
+                    >
+                        N/A
+                    </span>
+                </div>
+
+                <div class="latest-item">
+                    <span class="label">GitHub Run ID</span>
+                    <span
+                            id="latestRunId"
+                            class="value"
+                    >
+                        N/A
+                    </span>
+                </div>
+
+                <div class="latest-item">
+                    <span class="label">Risk Level</span>
+
+                    <span
+                            id="latestRiskLevel"
+                            class="risk-badge risk-UNKNOWN"
+                    >
+                        UNKNOWN
+                    </span>
+                </div>
+
+                <div class="latest-item">
+                    <span class="label">Risk Score</span>
+                    <span
+                            id="latestRiskScore"
+                            class="value"
+                    >
+                        N/A
+                    </span>
+                </div>
+
+                <div class="latest-item">
+                    <span class="label">Confidence</span>
+                    <span
+                            id="latestConfidence"
+                            class="value"
+                    >
+                        N/A
+                    </span>
+                </div>
+
+                <div class="latest-item">
+                    <span class="label">Deployment Decision</span>
+
+                    <span
+                            id="latestDecision"
+                            class="decision-badge decision-UNKNOWN"
+                    >
+                        UNKNOWN
+                    </span>
+                </div>
+
+                <div class="latest-item">
+                    <span class="label">Analysis Time</span>
+                    <span
+                            id="latestTimestamp"
+                            class="value"
+                    >
+                        N/A
+                    </span>
+                </div>
+            </div>
+
+            <div class="latest-details">
+
+                <div class="detail-box">
+                    <h3>Detected Failure Cause</h3>
+
+                    <p id="latestFailureCause">
+                        N/A
+                    </p>
+                </div>
+
+                <div class="detail-box">
+                    <h3>AI-Generated Recommendation</h3>
+
+                    <p id="latestRecommendation">
+                        N/A
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <p
+                id="latestError"
+                class="error-message"
+        ></p>
+    </section>
+
+    <h2>Risk Statistics</h2>
+
+    <div class="cards">
+
+        <div class="card total-card">
+            <h3>Total Analyses</h3>
+            <p id="total">0</p>
+        </div>
+
+        <div class="card high-card">
+            <h3>High-Risk Pipelines</h3>
+            <p id="high">0</p>
+        </div>
+
+        <div class="card medium-card">
+            <h3>Medium-Risk Pipelines</h3>
+            <p id="medium">0</p>
+        </div>
+
+        <div class="card low-card">
+            <h3>Low-Risk Pipelines</h3>
+            <p id="low">0</p>
+        </div>
+
+        <div class="card average-card">
+            <h3>Average Risk Score</h3>
+            <p id="avg">0</p>
+        </div>
     </div>
 
-    <div class="card">
-        <h3>High Risk</h3>
-        <p id="high">0</p>
+    <h2>Machine Learning Evaluation</h2>
+
+    <div class="cards">
+
+        <div class="card metrics-card">
+            <h3>Accuracy</h3>
+            <p id="accuracy">0%</p>
+        </div>
+
+        <div class="card metrics-card">
+            <h3>Precision</h3>
+            <p id="precision">0%</p>
+        </div>
+
+        <div class="card metrics-card">
+            <h3>Recall</h3>
+            <p id="recall">0%</p>
+        </div>
+
+        <div class="card metrics-card">
+            <h3>F1 Score</h3>
+            <p id="f1Score">0%</p>
+        </div>
     </div>
 
-    <div class="card">
-        <h3>Medium Risk</h3>
-        <p id="medium">0</p>
+    <p
+            id="metricsError"
+            class="error-message"
+    ></p>
+
+    <h2>Workflow History Analytics</h2>
+
+    <div class="cards">
+
+        <div class="card history-card">
+            <h3>Successful Workflows</h3>
+            <p id="successfulWorkflows">0</p>
+        </div>
+
+        <div class="card history-card">
+            <h3>Failed Workflows</h3>
+            <p id="failedWorkflows">0</p>
+        </div>
+
+        <div class="card history-card">
+            <h3>Average Confidence</h3>
+            <p id="averageConfidence">0%</p>
+        </div>
+
+        <div class="card history-card">
+            <h3>Average Risk Score</h3>
+            <p id="averageHistoryRiskScore">0</p>
+        </div>
     </div>
 
-    <div class="card">
-        <h3>Low Risk</h3>
-        <p id="low">0</p>
+    <p
+            id="historyError"
+            class="error-message"
+    ></p>
+
+    <div class="chart-grid">
+
+        <div class="chart-box">
+            <h2>
+                Risk Distribution Across Pipeline Analyses
+            </h2>
+
+            <div class="canvas-container">
+                <canvas id="riskChart"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-box">
+            <h2>Prediction Confidence Trend</h2>
+
+            <div class="canvas-container">
+                <canvas id="confidenceChart"></canvas>
+            </div>
+        </div>
     </div>
 
-    <div class="card">
-        <h3>Average Score</h3>
-        <p id="avg">0</p>
+    <div class="table-toolbar">
+        <h2>Recent Analyses</h2>
+
+        <input
+                id="analysisSearch"
+                class="search-input"
+                type="search"
+                placeholder="Search by ID, risk, failure cause or decision..."
+                oninput="filterRecentAnalyses()"
+        >
     </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Run ID</th>
+                <th>Risk Level</th>
+                <th>Score</th>
+                <th>Confidence</th>
+                <th>Failure Cause</th>
+                <th>Decision</th>
+                <th>Recommendation</th>
+                <th>Analysis Time</th>
+            </tr>
+            </thead>
+
+            <tbody id="recentTable"></tbody>
+        </table>
+    </div>
+
 </div>
-
-<!--<h2>Machine Learning Evaluation</h2>
-
-<div class="cards">
-    <div class="card metrics-card">
-        <h3>Accuracy</h3>
-        <p id="accuracy">0%</p>
-    </div>
-
-    <div class="card metrics-card">
-        <h3>Precision</h3>
-        <p id="precision">0%</p>
-    </div>
-
-    <div class="card metrics-card">
-        <h3>Recall</h3>
-        <p id="recall">0%</p>
-    </div>
-
-    <div class="card metrics-card">
-        <h3>F1 Score</h3>
-        <p id="f1Score">0%</p>
-    </div>
-
-
-<p id="metricsError" class="error-message"></p>
-</div>-->
-<h2>Workflow History Analytics</h2>
-
-<div class="cards">
-    <div class="card history-card">
-        <h3>Successful Workflows</h3>
-        <p id="successfulWorkflows">0</p>
-    </div>
-
-    <div class="card history-card">
-        <h3>Failed Workflows</h3>
-        <p id="failedWorkflows">0</p>
-    </div>
-
-    <div class="card history-card">
-        <h3>Average Confidence</h3>
-        <p id="averageConfidence">0%</p>
-    </div>
-
-    <div class="card history-card">
-        <h3>Average Risk Score</h3>
-        <p id="averageHistoryRiskScore">0</p>
-    </div>
-</div>
-
-<p id="historyError" class="error-message"></p>
-
-<div class="chart-box">
-    <h2>Risk Distribution</h2>
-    <canvas id="riskChart" width="400" height="150"></canvas>
-</div>
-
-<div class="chart-box">
-    <h2>Prediction Confidence Trend</h2>
-    <canvas id="confidenceChart" width="400" height="150"></canvas>
-</div>
-
-<h2>Recent Analyses</h2>
-
-<table>
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Risk Level</th>
-        <th>Score</th>
-        <th>Confidence</th>
-        <th>Decision</th>
-        <th>Recommendation</th>
-    </tr>
-    </thead>
-
-    <tbody id="recentTable"></tbody>
-</table>
 
 <script>
     let riskChart;
     let confidenceChart;
+    let recentAnalyses = [];
+
+    function escapeHtml(value) {
+        return String(value ?? '')
+            .replaceAll('&', '&amp;')
+            .replaceAll('<', '&lt;')
+            .replaceAll('>', '&gt;')
+            .replaceAll('"', '&quot;')
+            .replaceAll("'", '&#039;');
+    }
+
+    function normalizeValue(value, fallback = 'N/A') {
+        if (
+            value === null ||
+            value === undefined ||
+            String(value).trim() === ''
+        ) {
+            return fallback;
+        }
+
+        return value;
+    }
 
     function toPercentage(value) {
-        if (value === null || value === undefined) {
+        if (
+            value === null ||
+            value === undefined ||
+            Number.isNaN(Number(value))
+        ) {
             return 'N/A';
         }
 
         return `${(Number(value) * 100).toFixed(2)}%`;
     }
 
+    function formatTimestamp(value) {
+        if (!value) {
+            return 'N/A';
+        }
+
+        const date = new Date(value);
+
+        if (Number.isNaN(date.getTime())) {
+            return String(value);
+        }
+
+        return date.toLocaleString();
+    }
+
+    function getRiskClass(riskLevel) {
+        const normalized =
+            String(riskLevel ?? 'UNKNOWN').toUpperCase();
+
+        if (
+            normalized === 'HIGH' ||
+            normalized === 'MEDIUM' ||
+            normalized === 'LOW'
+        ) {
+            return `risk-${normalized}`;
+        }
+
+        return 'risk-UNKNOWN';
+    }
+
+    function getDecisionClass(decision) {
+        const normalized =
+            String(decision ?? 'UNKNOWN').toUpperCase();
+
+        if (
+            normalized === 'STOP' ||
+            normalized === 'REVIEW' ||
+            normalized === 'PROCEED'
+        ) {
+            return `decision-${normalized}`;
+        }
+
+        return 'decision-UNKNOWN';
+    }
+
+    function getTimestamp(item) {
+        return (
+            item.timestamp ??
+            item.analysisTime ??
+            item.createdAt ??
+            item.createdDate ??
+            null
+        );
+    }
+
+    function getRunId(item) {
+        return (
+            item.githubRunId ??
+            item.runId ??
+            'N/A'
+        );
+    }
+
+    async function fetchJson(url) {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error(
+                `${url} request failed: ${response.status}`
+            );
+        }
+
+        return response.json();
+    }
+
     async function loadStats() {
         try {
-            const res = await fetch('/api/risk/stats');
-
-            if (!res.ok) {
-                throw new Error(`Stats request failed: ${res.status}`);
-            }
-
-            const data = await res.json();
+            const data =
+                await fetchJson('/api/risk/stats');
 
             document.getElementById('total').innerText =
                 data.totalAnalyses ?? 0;
@@ -238,26 +786,25 @@
                 data.lowRiskCount ?? 0;
 
             document.getElementById('avg').innerText =
-                Number(data.averageRiskScore ?? 0).toFixed(2);
+                Number(
+                    data.averageRiskScore ?? 0
+                ).toFixed(2);
 
         } catch (error) {
-            console.error('Unable to load risk statistics:', error);
+            console.error(
+                'Unable to load risk statistics:',
+                error
+            );
         }
     }
 
     async function loadMetrics() {
-        const errorElement = document.getElementById('metricsError');
+        const errorElement =
+            document.getElementById('metricsError');
 
         try {
-            const res = await fetch('/api/ml/metrics');
-
-            if (!res.ok) {
-                throw new Error(
-                    `Metrics request failed: ${res.status}`
-                );
-            }
-
-            const data = await res.json();
+            const data =
+                await fetchJson('/api/ml/metrics');
 
             document.getElementById('accuracy').innerText =
                 toPercentage(data.accuracy);
@@ -274,10 +821,13 @@
             errorElement.innerText = '';
 
         } catch (error) {
-            console.error('Unable to load ML metrics:', error);
+            console.error(
+                'Unable to load ML metrics:',
+                error
+            );
 
             errorElement.innerText =
-                'Unable to load machine learning evaluation metrics.';
+                'Unable to load machine-learning evaluation metrics.';
         }
     }
 
@@ -286,16 +836,10 @@
             document.getElementById('historyError');
 
         try {
-            const res =
-                await fetch('/api/risk/history-summary');
-
-            if (!res.ok) {
-                throw new Error(
-                    `History summary request failed: ${res.status}`
+            const data =
+                await fetchJson(
+                    '/api/risk/history-summary'
                 );
-            }
-
-            const data = await res.json();
 
             document.getElementById(
                 'successfulWorkflows'
@@ -308,18 +852,22 @@
             document.getElementById(
                 'averageConfidence'
             ).innerText =
-                toPercentage(data.averageConfidence ?? 0);
+                toPercentage(
+                    data.averageConfidence ?? 0
+                );
 
             document.getElementById(
                 'averageHistoryRiskScore'
             ).innerText =
-                Number(data.averageRiskScore ?? 0).toFixed(2);
+                Number(
+                    data.averageRiskScore ?? 0
+                ).toFixed(2);
 
             errorElement.innerText = '';
 
         } catch (error) {
             console.error(
-                'Unable to load workflow history analytics:',
+                'Unable to load workflow history:',
                 error
             );
 
@@ -330,85 +878,280 @@
 
     async function loadRecent() {
         try {
-            const res = await fetch('/api/risk/recent');
+            const data =
+                await fetchJson('/api/risk/recent');
 
-            if (!res.ok) {
-                throw new Error(
-                    `Recent analyses request failed: ${res.status}`
-                );
-            }
+            recentAnalyses =
+                Array.isArray(data) ? data : [];
 
-            const data = await res.json();
-            const table =
-                document.getElementById('recentTable');
-
-            table.innerHTML = '';
-
-            data.forEach(item => {
-                const confidence =
-                    item.confidence === null ||
-                    item.confidence === undefined
-                        ? 'N/A'
-                        : toPercentage(item.confidence);
-
-                const riskLevel =
-                    item.riskLevel ?? 'UNKNOWN';
-
-                const riskScore =
-                    item.riskScore ?? 'N/A';
-
-                const deploymentDecision =
-                    item.deploymentDecision ?? 'N/A';
-
-                const recommendation =
-                    item.recommendation ?? 'N/A';
-
-                table.innerHTML += `
-                    <tr>
-                        <td>${item.id ?? 'N/A'}</td>
-
-                        <td class="${riskLevel}">
-                            ${riskLevel}
-                        </td>
-
-                        <td>${riskScore}</td>
-
-                        <td>${confidence}</td>
-
-                        <td>${deploymentDecision}</td>
-
-                        <td>${recommendation}</td>
-                    </tr>
-                `;
-            });
+            renderRecentAnalyses(recentAnalyses);
+            renderLatestAnalysis(recentAnalyses[0]);
 
         } catch (error) {
             console.error(
                 'Unable to load recent analyses:',
                 error
             );
+
+            recentAnalyses = [];
+
+            renderRecentAnalyses([]);
+
+            document.getElementById(
+                'latestLoading'
+            ).style.display = 'none';
+
+            document.getElementById(
+                'latestError'
+            ).innerText =
+                'Unable to load the latest pipeline analysis.';
         }
+    }
+
+    function renderLatestAnalysis(item) {
+        const loadingElement =
+            document.getElementById('latestLoading');
+
+        const contentElement =
+            document.getElementById('latestContent');
+
+        const errorElement =
+            document.getElementById('latestError');
+
+        loadingElement.style.display = 'none';
+
+        if (!item) {
+            contentElement.style.display = 'none';
+
+            errorElement.innerText =
+                'No pipeline analyses are available.';
+
+            return;
+        }
+
+        errorElement.innerText = '';
+        contentElement.style.display = 'block';
+
+        const riskLevel =
+            String(
+                item.riskLevel ?? 'UNKNOWN'
+            ).toUpperCase();
+
+        const decision =
+            String(
+                item.deploymentDecision ?? 'UNKNOWN'
+            ).toUpperCase();
+
+        document.getElementById('latestId').innerText =
+            normalizeValue(item.id);
+
+        document.getElementById(
+            'latestRunId'
+        ).innerText = getRunId(item);
+
+        const riskElement =
+            document.getElementById(
+                'latestRiskLevel'
+            );
+
+        riskElement.innerText = riskLevel;
+        riskElement.className =
+            `risk-badge ${getRiskClass(riskLevel)}`;
+
+        document.getElementById(
+            'latestRiskScore'
+        ).innerText =
+            normalizeValue(item.riskScore);
+
+        document.getElementById(
+            'latestConfidence'
+        ).innerText =
+            toPercentage(item.confidence);
+
+        const decisionElement =
+            document.getElementById(
+                'latestDecision'
+            );
+
+        decisionElement.innerText = decision;
+        decisionElement.className =
+            `decision-badge ${getDecisionClass(decision)}`;
+
+        document.getElementById(
+            'latestTimestamp'
+        ).innerText =
+            formatTimestamp(getTimestamp(item));
+
+        document.getElementById(
+            'latestFailureCause'
+        ).innerText =
+            normalizeValue(
+                item.failureCause,
+                'No failure cause was recorded.'
+            );
+
+        document.getElementById(
+            'latestRecommendation'
+        ).innerText =
+            normalizeValue(
+                item.recommendation,
+                'No recommendation was recorded.'
+            );
+    }
+
+    function renderRecentAnalyses(data) {
+        const table =
+            document.getElementById('recentTable');
+
+        table.innerHTML = '';
+
+        if (!data.length) {
+            table.innerHTML = `
+                <tr>
+                    <td
+                        colspan="9"
+                        class="empty-message"
+                    >
+                        No analyses found.
+                    </td>
+                </tr>
+            `;
+
+            return;
+        }
+
+        const rows = data.map(item => {
+            const riskLevel =
+                String(
+                    item.riskLevel ?? 'UNKNOWN'
+                ).toUpperCase();
+
+            const decision =
+                String(
+                    item.deploymentDecision ?? 'UNKNOWN'
+                ).toUpperCase();
+
+            return `
+                <tr>
+                    <td>
+                        ${escapeHtml(
+                            normalizeValue(item.id)
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHtml(getRunId(item))}
+                    </td>
+
+                    <td>
+                        <span class="
+                            risk-badge
+                            ${getRiskClass(riskLevel)}
+                        ">
+                            ${escapeHtml(riskLevel)}
+                        </span>
+                    </td>
+
+                    <td>
+                        ${escapeHtml(
+                            normalizeValue(item.riskScore)
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHtml(
+                            toPercentage(item.confidence)
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHtml(
+                            normalizeValue(
+                                item.failureCause,
+                                'N/A'
+                            )
+                        )}
+                    </td>
+
+                    <td>
+                        <span class="
+                            decision-badge
+                            ${getDecisionClass(decision)}
+                        ">
+                            ${escapeHtml(decision)}
+                        </span>
+                    </td>
+
+                    <td>
+                        ${escapeHtml(
+                            normalizeValue(
+                                item.recommendation,
+                                'N/A'
+                            )
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHtml(
+                            formatTimestamp(
+                                getTimestamp(item)
+                            )
+                        )}
+                    </td>
+                </tr>
+            `;
+        });
+
+        table.innerHTML = rows.join('');
+    }
+
+    function filterRecentAnalyses() {
+        const query =
+            document.getElementById(
+                'analysisSearch'
+            ).value
+                .trim()
+                .toLowerCase();
+
+        if (!query) {
+            renderRecentAnalyses(recentAnalyses);
+            return;
+        }
+
+        const filtered =
+            recentAnalyses.filter(item => {
+                const searchableText = [
+                    item.id,
+                    getRunId(item),
+                    item.riskLevel,
+                    item.riskScore,
+                    item.failureCause,
+                    item.deploymentDecision,
+                    item.recommendation,
+                    formatTimestamp(getTimestamp(item))
+                ]
+                    .join(' ')
+                    .toLowerCase();
+
+                return searchableText.includes(query);
+            });
+
+        renderRecentAnalyses(filtered);
     }
 
     async function loadTrend() {
         try {
-            const res = await fetch('/api/risk/trend');
+            const data =
+                await fetchJson('/api/risk/trend');
 
-            if (!res.ok) {
-                throw new Error(
-                    `Trend request failed: ${res.status}`
-                );
-            }
-
-            const data = await res.json();
-            const ctx =
+            const context =
                 document.getElementById('riskChart');
 
             if (riskChart) {
                 riskChart.destroy();
             }
 
-            riskChart = new Chart(ctx, {
+            riskChart = new Chart(context, {
                 type: 'bar',
 
                 data: {
@@ -425,12 +1168,33 @@
                             data.highRisk ?? 0,
                             data.mediumRisk ?? 0,
                             data.lowRisk ?? 0
-                        ]
+                        ],
+
+                        backgroundColor: [
+                            'rgba(220, 38, 38, 0.75)',
+                            'rgba(245, 158, 11, 0.75)',
+                            'rgba(22, 163, 74, 0.75)'
+                        ],
+
+                        borderColor: [
+                            'rgb(220, 38, 38)',
+                            'rgb(245, 158, 11)',
+                            'rgb(22, 163, 74)'
+                        ],
+
+                        borderWidth: 1
                     }]
                 },
 
                 options: {
                     responsive: true,
+                    maintainAspectRatio: false,
+
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
 
                     scales: {
                         y: {
@@ -466,36 +1230,32 @@
 
     async function loadConfidenceTrend() {
         try {
-            const res = await fetch('/api/risk/recent');
+            const data =
+                await fetchJson('/api/risk/recent');
 
-            if (!res.ok) {
-                throw new Error(
-                    `Confidence request failed: ${res.status}`
+            const orderedData =
+                (Array.isArray(data) ? [...data] : [])
+                    .filter(item =>
+                        item.confidence !== null &&
+                        item.confidence !== undefined
+                    )
+                    .reverse();
+
+            const labels =
+                orderedData.map(item =>
+                    `Analysis ${item.id}`
                 );
-            }
 
-            const data = await res.json();
+            const values =
+                orderedData.map(item =>
+                    Number(
+                        (
+                            Number(item.confidence) * 100
+                        ).toFixed(2)
+                    )
+                );
 
-            const orderedData = [...data]
-                .filter(item =>
-                    item.confidence !== null &&
-                    item.confidence !== undefined
-                )
-                .reverse();
-
-            const labels = orderedData.map(item =>
-                `Analysis ${item.id}`
-            );
-
-            const values = orderedData.map(item =>
-                Number(
-                    (
-                        Number(item.confidence) * 100
-                    ).toFixed(2)
-                )
-            );
-
-            const ctx =
+            const context =
                 document.getElementById(
                     'confidenceChart'
                 );
@@ -504,47 +1264,52 @@
                 confidenceChart.destroy();
             }
 
-            confidenceChart = new Chart(ctx, {
-                type: 'line',
+            confidenceChart =
+                new Chart(context, {
+                    type: 'line',
 
-                data: {
-                    labels: labels,
+                    data: {
+                        labels: labels,
 
-                    datasets: [{
-                        label:
-                            'Prediction Confidence (%)',
+                        datasets: [{
+                            label:
+                                'Prediction Confidence (%)',
 
-                        data: values,
+                            data: values,
+                            fill: false,
+                            tension: 0.3,
+                            spanGaps: true,
+                            borderColor:
+                                'rgb(37, 99, 235)',
+                            backgroundColor:
+                                'rgba(37, 99, 235, 0.2)'
+                        }]
+                    },
 
-                        fill: false,
-                        tension: 0.3,
-                        spanGaps: true
-                    }]
-                },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
 
-                options: {
-                    responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
 
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 100,
+                                title: {
+                                    display: true,
+                                    text: 'Confidence (%)'
+                                }
+                            },
 
-                            title: {
-                                display: true,
-                                text: 'Confidence (%)'
-                            }
-                        },
-
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Analysis'
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Analysis'
+                                }
                             }
                         }
                     }
-                }
-            });
+                });
 
         } catch (error) {
             console.error(
@@ -555,7 +1320,7 @@
     }
 
     async function loadDashboard() {
-        await Promise.all([
+        await Promise.allSettled([
             loadStats(),
             loadMetrics(),
             loadHistorySummary(),
@@ -563,6 +1328,21 @@
             loadTrend(),
             loadConfidenceTrend()
         ]);
+    }
+
+    async function refreshDashboard() {
+        const button =
+            document.getElementById('refreshButton');
+
+        button.disabled = true;
+        button.innerText = 'Refreshing...';
+
+        try {
+            await loadDashboard();
+        } finally {
+            button.disabled = false;
+            button.innerText = 'Refresh Dashboard';
+        }
     }
 
     loadDashboard();
