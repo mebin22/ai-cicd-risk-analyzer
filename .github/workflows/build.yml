@@ -22,10 +22,8 @@ jobs:
       - name: Build Project
         run: mvn clean package -DskipTests
 
-      - name: Run Unit Tests
+      - name: Compile Project
         run: |
-          echo "Running UserServiceTest..."
-          echo "Expected HTTP status 200 but received 500"
-          echo "AssertionError: expected 200 but was 500"
-          echo "UserServiceTest failed"
+          echo "Compilation failure"
+          echo "cannot find symbol UserService"
           exit 1
