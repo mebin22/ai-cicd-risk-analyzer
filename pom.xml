@@ -15,6 +15,7 @@
     <groupId>com.mabin</groupId>
     <artifactId>ai-cicd-risk-analyzer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <name>ai-cicd-risk-analyzer</name>
     <description>AI Assisted CI/CD Pipeline Risk Analyzer</description>
 

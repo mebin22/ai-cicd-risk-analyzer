@@ -31,34 +31,64 @@ public class OllamaIssueAnalysisService {
             return "Review the pipeline execution and identify the underlying issue before deployment.";
         }
 
+        String lower = failureCause.toLowerCase();
+
+        // HTTP 404
+        if (lower.contains("404")
+                || lower.contains("resource could not be found")
+                || lower.contains("endpoint or resource could not be found")) {
+
+            return "Verify that the requested API endpoint exists and that the URL and controller route mapping are correct. Correct any incorrect path or deployment configuration, then rerun the API test before deployment.";
+        }
+
+        // HTTP 500
+        if (lower.contains("500")
+                || lower.contains("internal server error")) {
+
+            return "Inspect the backend application logs to identify the exception causing the HTTP 500 response, correct the failing application logic, and rerun the test before deployment.";
+        }
+
+        // HTTP 401
+        if (lower.contains("401")
+                || lower.contains("unauthorized")) {
+
+            return "Verify the authentication credentials, tokens and authorization headers, then rerun the pipeline after correcting the authentication configuration.";
+        }
+
+        // HTTP 403
+        if (lower.contains("403")
+                || lower.contains("forbidden")) {
+
+            return "Check the configured user roles, permissions and access-control rules, correct the authorization settings, and rerun the pipeline.";
+        }
+
+        // Otherwise use Ollama
         String systemPrompt = """
-                You are a senior DevOps engineer.
+            You are a senior DevOps engineer.
 
-                Your task is to generate one practical recommendation
-                for resolving a detected CI/CD pipeline issue.
+            Generate one practical recommendation for resolving
+            the supplied CI/CD pipeline failure.
 
-                Rules:
-
-                1. Use only the supplied failure cause.
-                2. Do not invent additional errors.
-                3. Do not change test expectations merely to make a test pass.
-                4. When an application returns HTTP 500 instead of HTTP 200,
-                   recommend investigating and fixing the backend error.
-                5. Give clear, actionable steps.
-                6. Keep the recommendation concise.
-                7. Return only plain text.
-                8. Do not return JSON, Markdown, headings or bullet points.
-                """;
+            Rules:
+            1. Use only the supplied failure cause.
+            2. Do not invent additional errors.
+            3. Do not change test expectations simply to make tests pass.
+            4. Do not recommend verbose logging unless the failure cause
+               explicitly indicates insufficient diagnostic information.
+            5. Provide specific actionable remediation steps.
+            6. Keep the recommendation concise.
+            7. Return only plain text.
+            """;
 
         String userPrompt = """
-                Machine-learning risk level: %s
+            Machine-learning risk level: %s
 
-                Detected failure cause:
-                %s
+            Detected failure cause:
+            %s
 
-                Generate one specific DevOps recommendation that explains
-                how to resolve this issue before deployment.
-                """.formatted(
+            Generate one specific recommendation explaining
+            how to resolve this issue before deployment.
+            """.formatted(
                 riskLevel,
                 failureCause
         );
@@ -99,14 +129,6 @@ public class OllamaIssueAnalysisService {
                     "Ollama returned a blank recommendation."
             );
         }
-
-        System.out.println(
-                "===== OLLAMA RECOMMENDATION ====="
-        );
-        System.out.println(recommendation);
-        System.out.println(
-                "================================="
-        );
 
         return recommendation;
     }
