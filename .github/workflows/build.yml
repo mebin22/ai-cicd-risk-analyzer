@@ -19,3 +19,12 @@ jobs:
 
       - name: Build Project
         run: mvn clean install
+
+      - name: Docker Build Failure Test
+        run: |
+          echo "Starting Docker image build..."
+          echo "Docker build failed"
+          echo "ERROR: failed to solve: eclipse-temurin:21-jre"
+          echo "pull access denied"
+          echo "repository does not exist or may require authorization"
+          exit 1
