@@ -20,11 +20,12 @@ jobs:
       - name: Build Project
         run: mvn clean install
 
-      - name: Docker Build Failure Test
+      - name: Database Connection Failure Test
         run: |
-          echo "Starting Docker image build..."
-          echo "Docker build failed"
-          echo "ERROR: failed to solve: eclipse-temurin:21-jre"
-          echo "pull access denied"
-          echo "repository does not exist or may require authorization"
+          echo "Starting database integration test..."
+          echo "Connecting to PostgreSQL database..."
+          echo "org.postgresql.util.PSQLException: Connection to postgres:5432 refused"
+          echo "Check that the hostname and port are correct and that the database is accepting TCP/IP connections."
+          echo "Database integration test failed"
+          echo "Process completed with exit code 1"
           exit 1
