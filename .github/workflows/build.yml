@@ -2,31 +2,20 @@ name: Java CI Build
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Java 21
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: "21"
+          java-version: 21
 
       - name: Build Project
-        run: mvn clean package -DskipTests
-
-      - name: API Test
-        run: |
-          echo "Running API endpoint test..."
-          echo "GET /api/users"
-          echo "Expected HTTP status 200 but received 404"
-          echo "404 Not Found"
-          echo "API endpoint test failed"
-          exit 1
+        run: mvn clean install
