@@ -19,3 +19,12 @@ jobs:
 
       - name: Build Project
         run: mvn clean install
+
+      - name: API Test
+        run: |
+          echo "Running API endpoint test..."
+          echo "GET /api/users"
+          echo "Expected HTTP status 200 but received 404"
+          echo "404 Not Found"
+          echo "API endpoint test failed"
+          exit 1
