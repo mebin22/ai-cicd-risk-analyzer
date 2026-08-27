@@ -20,10 +20,3 @@ jobs:
       - name: Build Project
         run: mvn clean install
 
-      - name: API Test - Simulated 404 Failure
-        run: |
-          echo "GET /api/users"
-          echo "Expected HTTP status 200 but received 404"
-          echo "404 Not Found"
-          echo "The requested API endpoint or resource could not be found."
-          exit 1
