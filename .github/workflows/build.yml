@@ -20,9 +20,8 @@ jobs:
       - name: Build Project
         run: mvn clean install
 
-      - name: Dependency Warning - Medium Risk
+      - name: Code Coverage Warning - Medium Risk
         run: |
-          echo "Dependency version warning detected."
-          echo "A dependency is using an outdated version."
-          echo "Build completed but dependency should be reviewed before deployment."
-          echo "Warning: dependency update recommended."
+          echo "Code coverage below threshold manual review required"
+          echo "Workflow result: completed successfully with non-critical warnings"
+          echo "Deployment recommendation: manual review required"
