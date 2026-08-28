@@ -20,8 +20,9 @@ jobs:
       - name: Build Project
         run: mvn clean install
 
-      - name: Code Coverage Warning - Medium Risk
+      - name: Code Coverage Check
         run: |
           echo "Code coverage below threshold manual review required"
-          echo "Workflow result: completed successfully with non-critical warnings"
+          echo "Warning: Code coverage below threshold manual review required"
+          echo "Workflow completed successfully with non-critical warnings"
           echo "Deployment recommendation: manual review required"
