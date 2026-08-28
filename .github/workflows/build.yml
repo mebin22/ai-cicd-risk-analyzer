@@ -20,7 +20,9 @@ jobs:
       - name: Build Project
         run: mvn clean install
 
-      - name: Code coverage below threshold manual review required
+      - name: Artifact Integrity Failure
         run: |
-          echo "Warning detected"
-          echo "Manual review required before deployment"
+          echo "Artifact integrity validation failed"
+          echo "Generated application artifact does not match expected checksum"
+          echo "Artifact may be corrupted and cannot be safely deployed"
+          exit 1
