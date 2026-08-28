@@ -20,3 +20,9 @@ jobs:
       - name: Build Project
         run: mvn clean install
 
+      - name: Dependency Warning - Medium Risk
+        run: |
+          echo "Dependency version warning detected."
+          echo "A dependency is using an outdated version."
+          echo "Build completed but dependency should be reviewed before deployment."
+          echo "Warning: dependency update recommended."
