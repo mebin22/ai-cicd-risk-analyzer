@@ -273,6 +273,18 @@ public class IssueDetectionService {
             return "The workflow failed because a pipeline command exited with code 1.";
         }
 
+        // Database connection refused
+        if (lower.contains("connection")
+                && lower.contains("refused")
+                && (lower.contains("postgres")
+                || lower.contains("postgresql")
+                || lower.contains("mysql")
+                || lower.contains("jdbc")
+                || lower.contains("database"))) {
+
+            return "The application could not connect to the database because the database connection was refused.";
+        }
+
         return "No specific failure was detected from the workflow log.";
     }
 }
